@@ -263,7 +263,7 @@ b, .bold, .big  { font-weight: 700; }
 em, i { font-style: italic; }
 
 .ds {
-  text-shadow: 0px 17px 40px rgba(0 0 0 0.1);
+  text-shadow: 0px 17px 40px rgba(0 0 0);
 }
 
 /*
@@ -300,7 +300,7 @@ button, .button, .btn {
   @include transition(0.4s, ease-out);
 
   &.slim {
-    @extend .copy.small;
+    @extend .copy, .small;
     height: max-content; // for buttons inside flex-containers
     width: max-content;
     padding: 1.5*$m-xxs $m-xs;
@@ -371,11 +371,11 @@ table {
 
     tr {
       td {
-        padding: $m-xs / 2;
+        padding: calc($m-xs / 2);
         border: 2px solid #fff;
       }
       th {
-        padding: $m-xs $m-xs / 2;
+        padding: $m-xs calc($m-xs / 2);
         @extend .h3;
         line-height: 1em;
       }

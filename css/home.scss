@@ -112,8 +112,7 @@ Page: Home
               }
             }
             .view {
-              @extend .button;
-              @extend .button.slim;
+              @extend .button, .slim;
 
               position: absolute;
               bottom: $m-xxs; right: $m-xxs;
