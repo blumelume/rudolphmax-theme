@@ -1,0 +1,164 @@
+/*
+Stylesheet
+(c) Maximilian Rudolph 2022
+
+Pages: All
+*/
+
+html, body {
+  max-height: 100vh;
+  overflow: hidden;
+}
+.content {
+  max-height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/*
+Custom Cursor
+*/
+#cursor {
+  display: none;
+
+  @include md-min {
+    display: block;
+
+    position: absolute;
+    z-index: 2000;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+
+    width: 30px; height: 30px;
+    opacity: 0.5;
+    border: 1px solid $c-secondary;
+    border-radius: 1000px;
+
+    transition: width 0.1s, height 0.1s;
+    -webkit-transition: width 0.1s, height 0.1s;
+    -moz-transition: width 0.1s, height 0.1s;
+    -o-transition: width 0.1s, height 0.1s;
+
+    &.hover {
+      width: 15px; height: 15px;
+      background-color: $c-secondary;
+      border: none;
+      &.click { background-color: $c-primary; }
+    }
+    &.click {
+      width: 20px; height: 20px;
+    }
+  }
+}
+
+/*
+transition-ball
+*/
+#transition-ball {
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, 0);
+  left: 50%;
+
+  width: 200vw;
+  height: 200vw;
+  border-radius: 200vw;
+
+  &.red {
+    border: 50px solid #D21753;
+    background-color: #fff;
+  }
+}
+
+
+/*
+Preloader
+*/
+.preloader {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1000;
+
+  #preloader-lottie {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    z-index: 2000;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+}
+
+/*
+Socials
+*/
+.socials {
+  // position: absolute;
+  // top: $m-sm;
+  display: flex;
+  gap: $m-xs;
+
+  .social {
+    width: 30px; height: 30px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 1000px;
+    
+    &.mail { background-image: url('assets/symbols/mail.svg'); }
+    &.github { background-image: url('assets/symbols/github.svg'); }
+    &.linkedin { background-image: url('assets/symbols/linkedin.svg'); }
+  }
+}
+
+/*
+update-page
+*/
+#update-site {
+  .output-wrapper {
+    @extend .h5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $m-xs;
+    color: $c-secondary;
+
+    .loader {
+      position: relative;
+      width: 20px; height: 20px;
+      .bar {
+        position: relative;
+        left: 0;
+        width: 1px; height: 100%;
+        background-color: #D21753;
+        animation: loader 1s ease-in-out infinite;
+      }
+      @keyframes loader {
+        from { left: 0px; transform: rotate(0deg); }
+        50% { left: 15px; transform: rotate(180deg); }
+        to { left: 0px; transform: rotate(360deg); }
+      }
+    }
+
+    .response-output {
+      @extend .copy;
+      
+      width: 100%;
+      min-height: 40px;
+      margin: 0;
+      padding: $m-xxs $m-xs;
+
+      border-radius: 20px;
+    
+      @include transition(0.4s, ease-out);
+    
+      @include box-shadow(0px, 14px, 38px, 5px, rgba(210,23,83,0.03));
+      &:hover {
+        @include box-shadow(0px, 14px, 38px, 5px, rgba(210,23,83,0.06));
+      }
+    }
+  }
+}
