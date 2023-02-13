@@ -40,7 +40,7 @@ jobs:
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
           git add -f css-compiled/*
-          git commit -f 'Update : Compiled SCSS'
+          git commit -m 'Update : Compiled SCSS'
 
       - name: Push changes
         uses: ad-m/github-push-action@master
