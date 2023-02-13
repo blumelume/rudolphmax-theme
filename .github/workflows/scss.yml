@@ -3,36 +3,15 @@ name: scss
 on: push
 
 jobs:
-  sass-build:
-    name: Sass Build
-    uses: gha-utilities/sass-build@v0.4.11
-    with:
-      source: css
-      destination: css-compiled
-      # Array (Action splits on ":"), of directories to look under for imports and used modules
-      # includePaths: # optional
-      # String, either "expanded", "compressed", "nested", "compact"; defaults to "compressed"
-      # outputStyle: # optional
-      # Integer and float precision when compiling CSS, eg. `20`
-      # precision: # optional
-      # String, either "space" or "tab", default "space"
-      indentType: "tab"
-      indentWidth: 2
-      # String, either "lf", "lfcr", "cr", or "crlf", default "lf"
-      # linefeed: # optional
-      # Boolean, default `false` if `true` emits comments where CSS was compiled from
-      # sourceComments: # optional
-      # May be boolean or string, see https://sass-lang.com/documentation/js-api#sourcemap
-      # sourceMap: # optional
-      # String, does not write but is useful in combination with "sourceMap"
-      # outFile: # optional
-      # Boolean, when `true` compiled CSS is not linked to source map
-      # omitSourceMapUrl: # optional
-      # Boolean, when `true` embeds contents of Sass files that contributed to compiled CSS
-      # sourceMapContents: # optional
-      # Boolean, when `true` embeds source map within compiled CSS
-      # sourceMapEmbed: # optional
-      # String, prepended to all links from from source map to Sass files
-      # sourceMapRoot: # optional
-      # Outputs render_options used for compiling CSS
-      # debug: # optional
+  build_css:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Make destination directory for compiled CSS
+        run: mkdir -vp css-compiled
+
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.4.11
+        with:
+          source: css/global.scss
+          destination: css-compiled/global.css
