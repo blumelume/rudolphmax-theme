@@ -45,12 +45,12 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT }}
           branch: build 
 
       - name: Initialize Pull Request
         uses: gha-utilities/init-pull-request@v0.0.4
         with:
-          pull_request_token: ${{ secrets.GITHUB_TOKEN }}
+          pull_request_token: ${{ secrets.PAT }}
           head: build
           base: deploy
