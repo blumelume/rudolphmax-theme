@@ -7,6 +7,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout destination Git branch
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 10
+          submodules: true
+
       - name: Make destination directory for compiled CSS
         run: mkdir -vp /tmp/rudolphmax.com-theme/css/
 
