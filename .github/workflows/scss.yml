@@ -1,6 +1,9 @@
 name: scss
 
-on: push
+on: 
+  push:
+    branches:
+    - main
 
 jobs:
   build_css:
@@ -29,7 +32,7 @@ jobs:
             ref: build
             fetch-depth: 1
 
-      - name: Move compiled CSS to path within pr-pages branch
+      - name: Move compiled CSS to path within build branch
         run: mv /tmp/rudolphmax.com-theme/css/ css-compiled/
 
       - name: Add and Commit changes to build branch
@@ -37,7 +40,7 @@ jobs:
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
           git add css-compiled/*
-          git commit -m 'Update : Compiled SCSS'
+          git commit -mf 'Update : Compiled SCSS'
 
       - name: Push changes
         uses: ad-m/github-push-action@master
