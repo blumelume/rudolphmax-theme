@@ -8,10 +8,10 @@ jobs:
 
     steps:
       - name: Make destination directory for compiled CSS
-        run: mkdir -vp css-compiled
+        run: mkdir -vp /css-compiled
 
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.4.11
         with:
-          source: css/global.scss
-          destination: css-compiled/global.css
+          source: /css/global.scss
+          destination: /css-compiled/global.css
