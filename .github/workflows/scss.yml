@@ -15,13 +15,13 @@ jobs:
             submodules: true
 
       - name: Make destination directory for compiled CSS
-        run: mkdir -vp /tmp/repo-name/assets/css
+        run: mkdir -vp /tmp/rudolphmax.com-theme/css/
 
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.4.11
         with:
           source: css/global.scss
-          destination: /tmp/repo-name/assets/css/global.css
+          destination: /tmp/rudolphmax.com-theme/css/global.css
 
       - name: Checkout destination Git branch
         uses: actions/checkout@v2
@@ -30,7 +30,7 @@ jobs:
             fetch-depth: 1
 
       - name: Move compiled CSS to path within pr-pages branch
-        run: mv /tmp/repo-name/assets/css css-compiled/
+        run: mv /tmp/rudolphmax.com-theme/css/ css-compiled/
 
       - name: Add and Commit changes to build branch
         run: |
