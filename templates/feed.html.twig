@@ -1,0 +1,17 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {% block stage %}
+        {% for child in page.collection() if child.template == 'stage' %}
+            {% include  'modular/stage.html.twig' with {'content' : child.content } %}
+        {% endfor %}
+    {% endblock %}
+
+    <div class="feed">
+    {% block feed %}
+        {% for child in page.collection() if child.template != 'stage' %}
+            {% include  'partials/feed_listitem.html.twig' with {'feed' : page, 'page' : child } %}
+        {% endfor %}
+    {% endblock %}
+    </div>
+{% endblock %}
