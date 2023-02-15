@@ -1,3 +1,44 @@
 .feed {
   @extend .w3;
+
+  .feed-item, .feed-item > * { display: flex; }
+  .feed-item {
+    flex-direction: column;
+    gap: $m-xs;
+
+    h2 { 
+      @extend .h3;
+      > a {
+        color: $c-copy; 
+        text-decoration: none;
+      }
+    } 
+
+    > img {
+      order: -1;
+      margin-bottom: $m-xs;
+      width: 100%;
+    }
+    
+    > .btn.more {
+      @extend .light;
+      align-self: flex-end;
+    }
+  }
+}
+
+.article {
+  @extend .w2;
+
+  .article-head {
+    > h1 { text-align: center; }
+    > img { width: 100%; }
+  }
+
+  .article-text {
+    @extend .w3;
+
+    img { max-width: 100%; }
+    h2, .h2 { margin-top: $m-md; margin-bottom: calc($m-sm); }
+  }
 }
