@@ -1,18 +1,9 @@
-{% set title_image = page.header.image|defined(false) %}
-{% set title_image_file = page.url(true)|e ~ '/' ~ page.header.image_file %}
-
 <div class="feed-item">
 {% block feed_item %}
   
   <h2><a href="{{ page.url|e }}">{{ page.title }}</a></h2>
-  {% if title_image %}
-      {% if title_image_file %}
-        {% set title_image_media = page.media.images[title_image_file] %}
-      {% else %}
-        {% set title_image_media = page.media.images|first %}                   {# TODO: why does this not work? #}
-      {% endif %}
-      <img src="{{ title_image_file }}">
-  {% endif %}
+  
+  {% include 'partials/feed_title_image.html.twig' with { 'page' : page } %}
 
   {% set teaser_text = page.header.teaser|defined( page.header.description|defined(false) ) %}
   {% if teaser_text %}
