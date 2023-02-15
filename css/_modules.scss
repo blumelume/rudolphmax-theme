@@ -23,9 +23,14 @@
       width: 100%;
     }
     
-    > .btn.more {
-      @extend .light;
-      align-self: flex-end;
+    > .info {
+      display: flex;
+      justify-content: space-between;
+
+      .btn.more {
+        @extend .light;
+        align-self: flex-end;
+      }
     }
   }
 }
