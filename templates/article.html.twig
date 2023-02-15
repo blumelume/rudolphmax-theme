@@ -1,0 +1,18 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+<div class="article">
+
+  <div class="article-head">
+    <h1>{{ page.title }}</h1>
+    {% include 'partials/feed_title_image.html.twig' with { 'page' : page } %}
+  </div>
+
+  <div class="article-text">
+  {% block article %}
+    {{ page.content|raw }}
+  {% endblock %}
+  </div>
+
+</div>
+{% endblock %}
