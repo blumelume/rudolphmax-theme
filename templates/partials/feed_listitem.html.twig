@@ -1,25 +1,23 @@
 <div class="feed-item">
 {% block feed_item %}
-  
-  <h2><a href="{{ page.url|e }}">{{ page.title }}</a></h2>
-  
+
   {% include 'partials/feed_title_image.html.twig' with { 'page' : page } %}
+
+  <h2><a href="{{ page.url|e }}">{{ page.title }}</a></h2>
+
+  <div class="info">
+    {% if page.header.date %} <span class="info-date">{{ page.header.date|e }}</span> {% endif %}
+    {% if page.header.author %} <span class="info-author">{{ page.header.author|e }}</span> {% endif %}           {# TODO: multiple authors #}
+  </div>
 
   {% set teaser_text = page.header.teaser|defined( page.header.description|defined(false) ) %}
   {% if teaser_text %}
     <div class="teaser"> {{ teaser_text|e }} </div>
   {% endif %}
-
-  <div class="info">
-    <div class="info-meta">
-      {% if page.header.date %} <span class="info-date">{{ page.header.date|e }}</span> {% endif %}
-      {% if page.header.author %} <span class="info-author">{{ page.header.author|e }}</span> {% endif %}           {# TODO: multiple authors #}
-    </div>
-
-    <a class="btn slim more" role="button" aria-label="read article" href="{{ page.url|e }}" target="__blank">
-      read more
-    </a>
-  </div>
+  
+  <a class="btn slim more" role="button" aria-label="read article" href="{{ page.url|e }}" target="__blank">
+    read more
+  </a>
 
 {% endblock %}
 </div>

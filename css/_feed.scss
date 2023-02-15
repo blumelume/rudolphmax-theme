@@ -7,40 +7,35 @@
   .feed-item, .feed-item > * { display: flex; }
   .feed-item {
     flex-direction: column;
-    gap: $m-xs;
+    gap: calc($m-xs);
 
-    h2 { 
+    > h2 { 
       @extend .h3;
       > a { border: none; }
     } 
 
     > figure {
       order: -1;
-      // margin-bottom: $m-xs/2;
-      
       > img { width: 100%; }
     }
-    
+      
     > .info {
       display: flex;
-      justify-content: space-between;
-      
-      > .info-meta {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: $m-xs;
-        font-size: 0.9em;
-        color: $c-grey;
-      }
+      flex-direction: row;
+      align-items: center;
+      gap: $m-xs;
+      font-size: 0.9em;
+      color: $c-grey;
+    }
 
-      .btn.more {
-        @extend .light;
-        margin: 0;
-        align-self: flex-end;
-      }
+    .btn.more {
+      @extend .light;
+      margin: 0;
+      align-self: flex-end;
     }
   }
+
+  @include md { padding: 0 calc($m-xs); }
 }
 
 .article {
