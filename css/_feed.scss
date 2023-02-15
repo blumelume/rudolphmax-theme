@@ -24,9 +24,19 @@
     > .info {
       display: flex;
       justify-content: space-between;
+      
+      > .info-meta {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: $m-xs;
+        font-size: 0.9em;
+        color: $c-grey;
+      }
 
       .btn.more {
         @extend .light;
+        margin: 0;
         align-self: flex-end;
       }
     }
@@ -71,7 +81,7 @@
     img { max-width: 100%; }
     h2, .h2 { margin-top: $m-md; margin-bottom: $m-sm; }
     h3, .h3 { margin-top: calc(1.5 * $m-xs); margin-bottom: $m-xs; }
-    h4, .h4 { margin-bottom: $m-xs/2; }
+    h4, .h4 { margin-bottom: calc($m-xs/2); }
 
     iframe.youtube, iframe.yt {
       width: 100%; height: auto;
