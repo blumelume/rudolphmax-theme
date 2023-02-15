@@ -11,10 +11,7 @@
 
     h2 { 
       @extend .h3;
-      > a {
-        color: $c-copy; 
-        text-decoration: none;
-      }
+      > a { border: none; }
     } 
 
     > figure {
@@ -42,6 +39,14 @@
   margin-bottom: $m-lg;
 
   .article-head {
+    > .info-meta {
+      @extend .w3;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-bottom: $m-sm;
+    }
+
     > h1 {
       line-height: 1em;
       text-align: center;
@@ -65,7 +70,7 @@
 
     img { max-width: 100%; }
     h2, .h2 { margin-top: $m-md; margin-bottom: $m-sm; }
-    h3, .h3 { margin-top: $m-xs; margin-bottom: $m-xs/2; }
+    h3, .h3 { margin-top: calc(1.5 * $m-xs); margin-bottom: $m-xs; }
     h4, .h4 { margin-bottom: $m-xs/2; }
 
     iframe.youtube, iframe.yt {
