@@ -1,10 +1,4 @@
 {% set title_image = page.url(true)|e ~ '/' ~ page.header.image %}
-{% set title_image = title_image|defined(false) %} 
-
-{% if not title_image %}
-  {% set title_image = page.media.images|first %}                   {# TODO: Check this when image-linking ist sorted out #}
-{% endif %}
-
-{% if title_image %}
+{% if page.header.image %}
   <img src="{{ title_image }}">
 {% endif %}
