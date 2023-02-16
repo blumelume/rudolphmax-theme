@@ -55,6 +55,9 @@
     > h1 {
       line-height: 1em;
       text-align: center;
+      @include sm {
+        text-align: left;
+      }
     }
     > figure {
       gap: $m-xs;
@@ -84,5 +87,9 @@
       margin-top: $m-xs;
       margin-bottom: $m-xs;
     }
+  }
+
+  @include md {
+    padding: calc($m-xs);
   }
 }
