@@ -2,18 +2,20 @@ name: scss
 
 on: 
   pull_request:
+    types:
+    - closed
     branches:
     - main
 
 jobs:
   build_css:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout source Git branch
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.ref_name }}  # current branch
+          ref: main
           fetch-depth: 10
           submodules: true
 
@@ -35,7 +37,7 @@ jobs:
       - name: Move compiled CSS to path within build branch
         run: mv /tmp/rudolphmax.com-theme/css/ css-compiled/
 
-      - name: Add and Commit changes to build branch
+      - name: Add and Commit changes to main branch
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
