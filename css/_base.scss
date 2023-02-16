@@ -239,7 +239,7 @@ a:hover {
 h1, .h1 {
   font-size: calc(5rem * var(--type-mult));
   font-weight: 500;
-  // switching to h2-size
+  // switch to h2-size
   @include sm { font-size: calc(4rem * var(--type-mult)); }
 }
 h2, .h2 {
