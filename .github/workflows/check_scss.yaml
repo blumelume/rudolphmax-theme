@@ -1,0 +1,26 @@
+name: scss
+
+on: 
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  build_css:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source Git branch
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 10
+          submodules: true
+
+      - name: Make destination directory for compiled CSS
+        run: mkdir -vp /tmp/rudolphmax.com-theme/css/
+
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.4.11
+        with:
+          source: css/global.scss
+          destination: /tmp/rudolphmax.com-theme/css/global.css
