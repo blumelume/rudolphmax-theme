@@ -1,7 +1,7 @@
 name: scss
 
 on: 
-  push:
+  pull_request:
     branches:
     - main
 
@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout destination Git branch
+      - name: Checkout source Git branch
         uses: actions/checkout@v2
         with:
-          ref: main
+          ref: ${{ github.ref_name }}  # current branch
           fetch-depth: 10
           submodules: true
 
@@ -29,7 +29,7 @@ jobs:
       - name: Checkout destination Git branch
         uses: actions/checkout@v2
         with:
-            ref: build
+            ref: main
             fetch-depth: 1
 
       - name: Move compiled CSS to path within build branch
@@ -40,17 +40,10 @@ jobs:
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
           git add -f css-compiled/*
-          git commit -m 'Update : Compiled SCSS'
+          git commit -m 'Automation : Compiled SCSS'
 
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PAT }}
-          branch: build 
-
-      - name: Initialize Pull Request
-        uses: gha-utilities/init-pull-request@v0.0.4
-        with:
-          pull_request_token: ${{ secrets.PAT }}
-          head: build
-          base: deploy
+          branch: main
