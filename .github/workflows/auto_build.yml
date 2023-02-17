@@ -1,4 +1,4 @@
-name: scss
+name: Auto Build
 
 on: 
   pull_request:
