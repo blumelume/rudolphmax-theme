@@ -37,13 +37,14 @@
 
     {% block main_navigation %}
     <nav id="main">
-        {% include 'partials/navigation.html.twig' %}
+        {%  include 'partials/navigation.html.twig' %}
     </nav>
     {% endblock %}
 
     {% block bottom %}
         {{ assets.js('bottom')|raw }}
         {% do assets.addJs('jquery', 100) %}
+        {% do assets.addJs('theme://js/main_nav.js', 100) %}
     {% endblock %}
 
 </body>

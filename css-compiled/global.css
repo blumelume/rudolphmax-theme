@@ -559,11 +559,6 @@ table tbody tr th {
 nav#main {
   position: sticky;
   bottom: 1.33rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1.33rem;
 }
 @media (max-width: 768px) {
   nav#main {
@@ -575,35 +570,16 @@ nav#main {
     padding: 0 0.665rem;
   }
 }
-@media (max-width: 450px) {
-  nav#main {
-    gap: 0.665rem;
-  }
+nav#main .nav-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.33rem;
 }
 nav#main .nav-item {
   padding: 0.76rem 1.995rem;
   opacity: 0.95;
-}
-@media (max-width: 450px) {
-  nav#main .nav-item {
-    font-size: 0.9rem;
-  }
-  nav#main .nav-item:nth-child(3n+1).current {
-    background-color: #D21753;
-  }
-  nav#main .nav-item:nth-child(3n+2).current {
-    background-color: #131425;
-  }
-  nav#main .nav-item:nth-child(3n+3).current {
-    background-color: #5B63C6;
-  }
-  nav#main .nav-item.current {
-    width: 20px;
-    height: 20px;
-    margin: 0 0.4433333333rem;
-    padding: 0;
-    font-size: 0;
-  }
 }
 nav#main .nav-item.current {
   opacity: 0.6;
@@ -626,6 +602,53 @@ nav#main .nav-item:nth-child(3n+3) {
   color: #5B63C6;
   -webkit-box-shadow: 0 5px 38px 5px rgba(91, 99, 198, 0.15);
   box-shadow: 0 5px 38px 5px rgba(91, 99, 198, 0.15);
+}
+nav#main:not(.mobile) .collapser {
+  display: none;
+}
+@media (max-width: 768px) {
+  nav#main:not(.mobile) .nav-item {
+    font-size: 0.9rem;
+  }
+  nav#main:not(.mobile) .nav-item:nth-child(3n+1).current {
+    background-color: #D21753;
+  }
+  nav#main:not(.mobile) .nav-item:nth-child(3n+2).current {
+    background-color: #131425;
+  }
+  nav#main:not(.mobile) .nav-item:nth-child(3n+3).current {
+    background-color: #5B63C6;
+  }
+  nav#main:not(.mobile) .nav-item.current {
+    width: 20px;
+    height: 20px;
+    margin: 0 0.4433333333rem;
+    padding: 0;
+    font-size: 0;
+  }
+}
+nav#main.mobile.collapsed .nav-list {
+  opacity: 0;
+}
+nav#main.mobile .nav-list {
+  opacity: 1;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  gap: 0.4433333333rem;
+  margin-bottom: 2.66rem;
+  transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+}
+nav#main.mobile .nav-list .nav-item:not(.current) {
+  opacity: 1;
+}
+nav#main.mobile .collapser {
+  order: -1;
+  width: 20px;
+  height: 20px;
+  background-color: #5d5e66;
 }
 
 /*# sourceMappingURL=global.css.map */
