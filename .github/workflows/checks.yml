@@ -24,3 +24,21 @@ jobs:
         with:
           source: css/global.scss
           destination: /tmp/rudolphmax.com-theme/css/global.css
+
+  check_twig:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: php-actions/composer@v6
+      
+      - name: Install Twig Lint
+        run: composer global require "asm89/twig-lint" "@stable"
+      
+      - name: Checkout source Git branch
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 10
+          submodules: true
+
+      - name: Run Twig Lint
+        run: ~/.composer/vendor/bin/twig-lint lint templates/*
