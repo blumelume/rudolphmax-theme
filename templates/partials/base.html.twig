@@ -18,7 +18,7 @@
     {% endblock %}
 
     {% block javascripts %}
-        
+        {% do assets.addJs('theme://js/main_nav.js') %}
     {% endblock %}
 
     {% block assets deferred %}
@@ -44,7 +44,6 @@
     {% block bottom %}
         {{ assets.js('bottom')|raw }}
         {% do assets.addJs('jquery', 100) %}
-        {% do assets.addJs('theme://js/main_nav.js', 100) %}
     {% endblock %}
 
 </body>
