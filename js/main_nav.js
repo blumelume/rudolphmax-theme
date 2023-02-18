@@ -10,12 +10,12 @@ window.addEventListener('load', function () {
   }
 
   window.addEventListener('resize', mobilizeMainNav)
-  mobilizeMainNav();
+  mobilizeMainNav()
 
   const collapser = mainNav.querySelector('button.collapser')
   if (collapser) {
     collapser.addEventListener('click', (e) => {
       mainNav.classList.toggle('collapsed')
-    });
+    })
   }
-});
+})
