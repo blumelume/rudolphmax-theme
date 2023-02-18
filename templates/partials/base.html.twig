@@ -36,7 +36,11 @@
     {% endblock %}
 
     {% block main_navigation %}
-    <nav id="main">
+    {% if (browser.platform|e == "android" or browser.platform|e == "iphone") %}
+        <nav id="main" class="mobile collapsed">
+    {% else %}
+        <nav id="main">
+    {% endif %}
         {%  include 'partials/navigation.html.twig' %}
     </nav>
     {% endblock %}
