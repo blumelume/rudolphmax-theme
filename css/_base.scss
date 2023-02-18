@@ -96,8 +96,14 @@ html {
   box-sizing: border-box;
 }
 
-.bg-copy { background-color: $c-copy; }
-.bg-light { background-color: $c-light; }
+.bg-dark { 
+  background-color: $c-primary-dark;
+  color: $c-light;
+}
+.bg-light {
+  background-color: $c-light;
+  color: $c-copy;
+}
 
 .hide { display: none; }
 
@@ -140,11 +146,39 @@ Containers / Spacers
 .stage {
   min-height: 100vh;
   max-height: 100vh;
+  &.cutoff {
+    min-height: 80vh;
+  }
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .stage-content {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    
+    .jump-stage {
+      width: 44px; height: 44px;
+      margin-top: $m-sm;
+      align-self: center;
+      
+      background-color: $c-primary;
+      background-image: url('../assets/arrow-long-down.svg');
+      background-repeat: no-repeat;
+      background-position: center 9px;
+      border-radius: 100px;
+      
+      &:hover {
+        background-position: center 14px;
+      }
+      @include transition(0.2s, ease-out);
+    }
+  }
 
   @include md {
     max-height: initial;
@@ -271,6 +305,7 @@ h5, .h5 {
 
 b, .bold, .big  { font-weight: 700; }
 em, i { font-style: italic; }
+.regular { font-weight: 400; }
 
 .ds {
   text-shadow: 0px 17px 40px rgba(0 0 0);
