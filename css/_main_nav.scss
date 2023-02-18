@@ -62,29 +62,67 @@ nav#main {
   }
 
   &.mobile {
-    &.collapsed {
-      .nav-list  {
-        opacity: 0;
-      }
+    padding-left: $m-xs;
+
+    // darkening background-overlay
+    &::before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: $c-copy;
+      opacity: 0.1;
+      @include transition(2s, ease-out);
     }
 
     .nav-list {
-      opacity: 1;
+      position: absolute;
+      bottom: calc(100% + $m-sm);
+      z-index: 1;
       flex-direction: column-reverse;
       align-items: flex-start;
-      gap: calc($m-xs/3);
-      margin-bottom: $m-sm;  
-      @include transition(1s, ease-out);
+      gap: calc($m-xs/2);
+      // margin-bottom: $m-sm;  
 
       .nav-item:not(.current) {
         opacity: 1;
+      }
+      .nav-item {
+        @include transition(1s, ease-out);
+        transition-delay: calc(var(--n) * 0.2s);
       }
     }
 
     .collapser {
       order: -1;
-      width: 20px; height: 20px;
-      background-color: $c-grey;
+      padding: 0;
+      width: 40px; height: 40px;
+      
+      @include box-shadow(0, 7px, 45px, 0px, rgba($c-primary, 0.3));
+      background-image: url('../assets/arrow-up.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $c-light;
+      border-radius: 100px; 
+
+      transform: scale(1.15) rotate(0deg);
+      @include transition(0.7s, ease-out);
+    }
+
+    &.collapsed {
+      .nav-list .nav-item  {
+        opacity: 0;
+        transition-delay: 0s;
+      }
+      .collapser {
+        @include box-shadow(5px, 0px, 40px, 1px, rgba($c-primary, 0.2));
+        transform: scale(1) rotate(90deg);
+      }
+      &::before {
+        pointer-events: none;
+        opacity: 0;
+      }
     }
   }
 

@@ -2,7 +2,7 @@
     {% for page in pages.children.visible %}
         {% set current_page = (page.active or page.activeChild) ? 'current' : '' %}
         {# <div class="nav-item {{ current_page|e }}"> #}
-            <a class="button nav-item {{ current_page|e }}" href="{{ page.url|e }}">
+            <a class="button nav-item {{ current_page|e }}" href="{{ page.url|e }}" style="--n: {{loop.index}}">
                 {# {% if page.header.icon %}<i class="fa fa-{{ page.header.icon|e }}"></i>{% endif %} #}
                 <span class="text">{{ page.menu|e }}</span>
             </a>
