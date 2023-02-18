@@ -1,0 +1,129 @@
+nav#main {
+  position: sticky;
+  bottom: $m-xs;
+
+  @extend .w3;
+  @include md { padding: 0 $m-xs; }
+  @include sm { padding: 0 calc($m-xs/2); }
+
+  .nav-list {
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: $m-xs;
+  }
+
+  .nav-item {
+    @extend .btn, .color, .primary;
+    padding: calc($m-xs/1.75) calc(1.5*$m-xs);
+    opacity: 0.95;
+
+    &.current {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    &:nth-child(3n+1) {
+      color: $c-secondary;
+      @include box-shadow(0, 5px, 38px, 5px, rgba($c-secondary, 0.12));
+    }
+    &:nth-child(3n+2) {
+      color: $c-copy;
+      @include box-shadow(0, 5px, 38px, 5px, rgba($c-copy, 0.07));
+    }
+    &:nth-child(3n+3) {
+      color: $c-primary;
+      @include box-shadow(0, 5px, 38px, 5px, rgba($c-primary, 0.15));
+    }
+  }
+
+  &:not(.mobile) {
+    .collapser { display: none; }
+
+    .nav-item {
+      @include md {
+        font-size: 0.9rem;
+        
+        &:nth-child(3n+1).current { background-color: $c-secondary; }
+        &:nth-child(3n+2).current { background-color: $c-copy; }
+        &:nth-child(3n+3).current { background-color: $c-primary; }
+        &.current {
+          width: 20px; height: 20px;
+          margin: 0 calc($m-xs/3);
+          padding: 0;
+          font-size: 0;
+        }
+      }
+    }
+  }
+
+  &.mobile {
+    padding-left: $m-xs;
+
+    // darkening background-overlay
+    &::before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: $c-copy;
+      opacity: 0.1;
+      @include transition(2s, ease-out);
+    }
+
+    .nav-list {
+      position: absolute;
+      bottom: calc(100% + $m-sm);
+      z-index: 1;
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: calc($m-xs/2);
+      // margin-bottom: $m-sm;  
+
+      .nav-item:not(.current) {
+        opacity: 1;
+      }
+      .nav-item {
+        @include transition(1s, ease-out);
+        transition-delay: calc(var(--n) * 0.2s);
+      }
+    }
+
+    .collapser {
+      order: -1;
+      padding: 0;
+      width: 40px; height: 40px;
+      
+      @include box-shadow(0, 7px, 45px, 0px, rgba($c-primary, 0.3));
+      background-image: url('../assets/arrow-up.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $c-light;
+      border-radius: 100px; 
+
+      transform: scale(1.15) rotate(0deg);
+      @include transition(0.7s, ease-out);
+    }
+
+    &.collapsed {
+      .nav-list .nav-item  {
+        opacity: 0;
+        transition-delay: 0s;
+      }
+      .collapser {
+        @include box-shadow(5px, 0px, 40px, 1px, rgba($c-primary, 0.2));
+        transform: scale(1) rotate(90deg);
+      }
+      &::before {
+        pointer-events: none;
+        opacity: 0;
+      }
+    }
+  }
+
+}

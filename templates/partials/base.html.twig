@@ -18,7 +18,7 @@
     {% endblock %}
 
     {% block javascripts %}
-        
+        {% do assets.addJs('theme://js/main_nav.js') %}
     {% endblock %}
 
     {% block assets deferred %}
@@ -36,9 +36,13 @@
     {% endblock %}
 
     {% block main_navigation %}
-        <nav class="main-nav">
-            {% include 'partials/navigation.html.twig' %}
-        </nav>
+    {% if (browser.platform|e == "android" or browser.platform|e == "iphone") %}
+        <nav id="main" class="mobile collapsed">
+    {% else %}
+        <nav id="main">
+    {% endif %}
+        {%  include 'partials/navigation.html.twig' %}
+    </nav>
     {% endblock %}
 
     {% block bottom %}

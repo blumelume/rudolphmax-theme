@@ -258,7 +258,7 @@ h4, .h4 {
   }
 }
 h5, .h5 {
-  font-size: calc(1rem * var(--type-mult));
+  font-size: max(1rem, calc(1rem * var(--type-mult)));
   font-weight: 500;
   &.small {
     font-weight: 400;
@@ -336,21 +336,22 @@ button, .button, .btn {
 
   &.color {
     @extend .h5;
+    // font-size: calc(1rem * var(--type-mult));
     padding: $m-xs $m-sm;
     background-color: $c-light;
     border-radius: 1000px;
     &.primary {
       color: $c-primary;
-      @include box-shadow(0px, 14px, 38px, 5px, rgba(91,99,198,0.05));
+      @include box-shadow(0px, 0px, 38px, 5px, rgba($c-primary,0.05));
       &:hover {
-        @include box-shadow(0px, 14px, 38px, 5px, rgba(91,99,198,0.15));
+        @include box-shadow(0px, 8px, 38px, 5px, rgba($c-primary,0.3));
       }
     }
     &.secondary {
       color: $c-secondary;
-      @include box-shadow(0px, 14px, 38px, 5px, rgba(210,23,83,0.03));
+      @include box-shadow(0px, 0px, 38px, 5px, rgba($c-secondary,0.03));
       &:hover {
-        @include box-shadow(0px, 14px, 38px, 5px, rgba(210,23,83,0.08));
+        @include box-shadow(0px, 8px, 38px, 5px, rgba($c-secondary,0.08));
       }
     }
   }
