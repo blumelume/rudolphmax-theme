@@ -1,6 +1,6 @@
-@use 'breakpoints' as bp;
-@use 'sizes' as *;
-@use 'colors' as *;
+@use "breakpoints" as bp;
+@use "sizes" as *;
+@use "colors" as *;
 
 @mixin sm { @media (max-width: #{$w4}) { @content; } }
 @mixin md { @media (max-width: #{bp.$md}) { @content; } }

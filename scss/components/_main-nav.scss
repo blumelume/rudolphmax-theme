@@ -1,5 +1,5 @@
-@use '../abstracts' as *;
-@use '../base' as *;
+@use "../abstracts" as *;
+@use "../base" as *;
 
 nav#main {
   position: sticky;
@@ -69,7 +69,7 @@ nav#main {
 
     // darkening background-overlay
     &::before {
-      content: '';
+      content: "";
       display: block;
       position: fixed;
       top: 0; left: 0;
@@ -86,7 +86,6 @@ nav#main {
       flex-direction: column-reverse;
       align-items: flex-start;
       gap: calc($xs/2);
-      // margin-bottom: $sm;  
 
       .nav-item:not(.current) {
         opacity: 1;
@@ -103,7 +102,7 @@ nav#main {
       width: 40px; height: 40px;
       
       @include box-shadow(0, 7px, 45px, 0px, rgba($primary, 0.3));
-      background-image: url('../assets/arrow-up.svg');
+      background-image: url("../assets/arrow-up.svg");
       background-repeat: no-repeat;
       background-position: center;
       background-color: $light;

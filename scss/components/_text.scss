@@ -1,9 +1,7 @@
-@use '../abstracts' as *;
-@use '../base' as *;
+@use "../abstracts" as *;
+@use "../base" as *;
 
 .text {
-  @extend .w3; 
-  @include md {
-    padding: 0 $xs;
-  }
+  @extend .w3;
+  @include md { padding: 0 $xs; }
 }

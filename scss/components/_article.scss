@@ -1,5 +1,5 @@
-@use '../abstracts' as *;
-@use '../base' as *;
+@use "../abstracts" as *;
+@use "../base" as *;
 
 .article {
   @extend .w2;
@@ -22,13 +22,16 @@
         text-align: left;
       }
     }
+
     > figure {
       gap: $xs;
       margin-top: $md;
       margin-bottom: $md;
+
       > img { width: 100%; }
+
       > figcaption {
-        @extend .subtitle; 
+        @extend .subtitle;
         color: $grey;
         margin-top: $xs;
         text-align: center;
@@ -40,11 +43,24 @@
     @extend .w3;
 
     img { max-width: 100%; }
-    h2, .h2 { margin-top: $md; margin-bottom: $sm; }
-    h3, .h3 { margin-top: calc(1.5 * $xs); margin-bottom: $xs; }
-    h4, .h4 { margin-bottom: calc($xs/2); }
+    
+    h2, 
+    .h2 {
+      margin-top: $md;
+      margin-bottom: $sm;
+    }
 
-    iframe.youtube, iframe.yt {
+    h3, 
+    .h3 {
+      margin-top: calc(1.5 * $xs);
+      margin-bottom: $xs;
+    }
+
+    h4, 
+    .h4 { margin-bottom: calc($xs/2); }
+
+    iframe.youtube, 
+    iframe.yt {
       width: 100%; height: auto;
       aspect-ratio: calc(3/2);
       margin-top: $xs;

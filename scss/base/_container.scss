@@ -1,4 +1,4 @@
-@use '../abstracts' as a;
+@use "../abstracts" as a;
 
 .c-primary-dark { color: a.$primary-dark; }
 .c-primary { color: a.$primary; }
@@ -7,10 +7,11 @@
 .c-light { color: a.$light; }
 .c-copy { color: a.$copy; }
 
-.bg-dark { 
+.bg-dark {
   background-color: a.$primary-dark;
   color: a.$light;
 }
+
 .bg-light {
   background-color: a.$light;
   color: a.$copy;
@@ -22,21 +23,28 @@
 .space-xs { padding-bottom: a.$xs; }
 .space-xxs { padding-bottom: a.$xxs; }
 
-.whero, .w1, .w2, .w3, .w4 {
+.whero,
+.w1, 
+.w2, 
+.w3, 
+.w4 {
   max-width: 100%;
   margin: 0 auto;
 }
+
 .whero { width: a.$whero; }
 .w1 { width: a.$w1; }
 .w2 { width: a.$w2; }
 .w3 { width: a.$w3; }
 .w4 { width: a.$w4; }
+
 .gutter-xs {
   @include a.lg {
     padding-right: a.$xs;
     padding-left: a.$xs;
   }
 }
+
 .center {
   display: flex;
   flex-direction: row;
@@ -46,7 +54,7 @@
 .hide { display: none; }
 
 html {
-  font-family: 'Basier Circle', sans-serif;
+  font-family: "Basier Circle", sans-serif;
   font-weight: 400;
   font-size: 16px;
   color: a.$copy;

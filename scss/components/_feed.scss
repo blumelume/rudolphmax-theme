@@ -1,5 +1,5 @@
-@use '../abstracts' as *;
-@use '../base' as *;
+@use "../abstracts" as *;
+@use "../base" as *;
 
 .feed {
   @extend .w4;
@@ -7,21 +7,27 @@
   flex-direction: column;
   gap: $md;
 
-  .feed-item, .feed-item > * { display: flex; }
+  .feed-item,
+  .feed-item > * {
+    display: flex;
+  }
+
   .feed-item {
     flex-direction: column;
     gap: calc($xs);
 
     > h2 { 
       @extend .h3;
+
       > a { border: none; }
-    } 
+    }
 
     > figure {
       order: -1;
+
       > img { width: 100%; }
     }
-      
+
     > .info {
       display: flex;
       flex-direction: row;
