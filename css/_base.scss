@@ -149,11 +149,15 @@ Containers / Spacers
   &.cutoff {
     min-height: 80vh;
   }
+  &.small {
+    min-height: 400px;
+  }
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: $m-lg;
 
   .stage-content {
     display: flex;
@@ -182,6 +186,7 @@ Containers / Spacers
 
   @include md {
     max-height: initial;
+    padding: 0 $m-xs;
   }
 }
 .center {
