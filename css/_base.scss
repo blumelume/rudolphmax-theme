@@ -39,8 +39,8 @@ $m-xxs: 0.66rem;
 $whero: 1200px;
 $w1: 1090px;
 $w2: 900px;
-$w3: 600px;
-$w4: 450px;
+$w3: 650px;
+$w4: 500px;
 
 // Breakpoints
 @mixin sm { @media (max-width: #{$w4}) { @content; } }
