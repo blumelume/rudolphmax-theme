@@ -160,6 +160,12 @@ footer {
   padding: 0 $m-xs;
 
   * { @extend .small; }
+  
+  @include sm {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: flex-start;
+  }
 }
 
 .stage {
