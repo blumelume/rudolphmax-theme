@@ -1,0 +1,19 @@
+{% set owner = config.site.author.name|e %}
+{% set mail = config.site.author.email|e %}
+<footer>
+  <p>
+    copyright ©<span id="cr-year">2023</span> {{ owner }}. / 
+    <a aria-label="email the copyright owner" target="_blank" href="mailto:{{ mail }}">
+      {{ mail }}
+    </a>
+  </p>
+
+  {% for page in pages.children %}
+    {% if (page.title =='impressum' or page.title =='imprint') %}
+      <p><a role="button" aria-label="got to imprint" id="imprint" target="_blank" href="{{ page.url|e }}">
+        {{ page.title|e }}
+      </a></p>
+    {% endif %}
+  {% endfor %}
+
+</footer>

@@ -37,13 +37,20 @@
     {% endblock %}
 
     {% block main_navigation %}
-    {% if (browser.platform|e == "android" or browser.platform|e == "iphone") %}
-        <nav id="main" class="mobile collapsed">
-    {% else %}
-        <nav id="main">
-    {% endif %}
+        {% if (browser.platform|e == "android" or browser.platform|e == "iphone") %}
+            <nav id="main" class="mobile collapsed">
+        {% else %}
+            <nav id="main">
+        {% endif %}
+
         {%  include 'partials/navigation.html.twig' %}
     </nav>
+    {% endblock %}
+
+    <div class="space-lg"></div>
+
+    {% block footer %}
+        {% include 'partials/footer.html.twig' %}
     {% endblock %}
 
     {% block bottom %}
@@ -52,4 +59,5 @@
     {% endblock %}
 
 </body>
+
 </html>

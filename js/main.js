@@ -18,4 +18,9 @@ window.addEventListener('load', function () {
     })
   })
 
+  let crYear = document.getElementById('cr-year');
+  if (crYear) {
+    crYear.innerHTML = new Date().getFullYear();
+  }
+
 })
