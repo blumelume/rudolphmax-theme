@@ -3,7 +3,7 @@
 {% block content %}
     {% block stage %}
         {% for child in page.collection() if child.template == 'stage' %}
-            {% include  'modular/stage.html.twig' with {'content' : child.content } %}
+            {% include 'modular/stage.html.twig' with {'module' : child, 'content' : child.content } %}
         {% endfor %}
     {% endblock %}
 

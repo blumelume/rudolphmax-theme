@@ -29,12 +29,18 @@ $m-sm: 2.66rem;
 $m-xs: 1.33rem;
 $m-xxs: 0.66rem;
 
+.space-lg { margin-top: $m-lg; }
+.space-md { margin-top: $m-md; }
+.space-sm { margin-top: $m-sm; }
+.space-xs { margin-top: $m-xs; }
+.space-xxs { margin-top: $m-xxs; }
+
 // Widths
 $whero: 1200px;
 $w1: 1090px;
 $w2: 900px;
-$w3: 600px;
-$w4: 450px;
+$w3: 650px;
+$w4: 500px;
 
 // Breakpoints
 @mixin sm { @media (max-width: #{$w4}) { @content; } }
@@ -96,8 +102,14 @@ html {
   box-sizing: border-box;
 }
 
-.bg-copy { background-color: $c-copy; }
-.bg-light { background-color: $c-light; }
+.bg-dark { 
+  background-color: $c-primary-dark;
+  color: $c-light;
+}
+.bg-light {
+  background-color: $c-light;
+  color: $c-copy;
+}
 
 .hide { display: none; }
 
@@ -136,18 +148,70 @@ Containers / Spacers
   max-width: 100vw;
   overflow-y: hidden;
 }
+footer {
+  @extend .w2; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  margin-top: $m-md;
+  margin-bottom: $m-sm;
+  padding: 0 $m-xs;
+
+  * { @extend .small; }
+  
+  @include sm {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
 
 .stage {
   min-height: 100vh;
   max-height: 100vh;
+  &.cutoff {
+    min-height: 80vh;
+  }
+  &.small {
+    min-height: 400px;
+  }
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: $m-lg;
+
+  .stage-content {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    
+    .jump-stage {
+      width: 44px; height: 44px;
+      margin-top: $m-sm;
+      align-self: center;
+      
+      background-color: $c-primary;
+      background-image: url('../assets/arrow-long-down.svg');
+      background-repeat: no-repeat;
+      background-position: center 9px;
+      border-radius: 100px;
+      
+      &:hover {
+        background-position: center 14px;
+      }
+      @include transition(0.2s, ease-out);
+    }
+  }
 
   @include md {
     max-height: initial;
+    padding: 0 $m-xs;
   }
 }
 .center {
@@ -271,6 +335,7 @@ h5, .h5 {
 
 b, .bold, .big  { font-weight: 700; }
 em, i { font-style: italic; }
+.regular { font-weight: 400; }
 
 .ds {
   text-shadow: 0px 17px 40px rgba(0 0 0);

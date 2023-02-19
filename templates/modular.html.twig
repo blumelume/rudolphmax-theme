@@ -2,6 +2,11 @@
 
 {% block content %}
     {% for module in page.collection() %}
-        {{ module.content|raw }}
+        
+        {% block module %}
+            {# {% include module.template ~ '.html.twig' with { 'module' : module, 'content' : module.content } %} #}
+            {{ module.content|raw }}
+        {% endblock %}
+
     {% endfor %}
 {% endblock %}
