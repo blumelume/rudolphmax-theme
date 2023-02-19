@@ -4,7 +4,8 @@
     {% for module in page.collection() %}
         
         {% block module %}
-            {% include module.template ~ '.html.twig' with { 'module' : module, 'content' : module.content } %}
+            {# {% include module.template ~ '.html.twig' with { 'module' : module, 'content' : module.content } %} #}
+            {{ module.content|raw }}
         {% endblock %}
 
     {% endfor %}

@@ -1,4 +1,6 @@
-<div class="stage {{ module.header.classes }}">
+{% set classes = module.header.classes|defined( page.header.classes ) %}
+
+<div class="stage {{ classes }}">
   <div class="stage-content">
     {{ content|raw }}
   </div>
