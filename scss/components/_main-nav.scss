@@ -1,22 +1,25 @@
+@use '../abstracts' as *;
+@use '../base' as *;
+
 nav#main {
   position: sticky;
-  bottom: $m-xs;
+  bottom: $xs;
 
   @extend .w3;
-  @include md { padding: 0 $m-xs; }
-  @include sm { padding: 0 calc($m-xs/2); }
+  @include md { padding: 0 $xs; }
+  @include sm { padding: 0 calc($xs/2); }
 
   .nav-list {
     display: flex; 
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: $m-xs;
+    gap: $xs;
   }
 
   .nav-item {
     @extend .btn, .color, .primary;
-    padding: calc($m-xs/1.75) calc(1.5*$m-xs);
+    padding: calc($xs/1.75) calc(1.5*$xs);
     opacity: 0.95;
 
     &.current {
@@ -28,16 +31,16 @@ nav#main {
     }
 
     &:nth-child(3n+1) {
-      color: $c-secondary;
-      @include box-shadow(0, 5px, 38px, 5px, rgba($c-secondary, 0.12));
+      color: $secondary;
+      @include box-shadow(0, 5px, 38px, 5px, rgba($secondary, 0.12));
     }
     &:nth-child(3n+2) {
-      color: $c-copy;
-      @include box-shadow(0, 5px, 38px, 5px, rgba($c-copy, 0.07));
+      color: $copy;
+      @include box-shadow(0, 5px, 38px, 5px, rgba($copy, 0.07));
     }
     &:nth-child(3n+3) {
-      color: $c-primary;
-      @include box-shadow(0, 5px, 38px, 5px, rgba($c-primary, 0.15));
+      color: $primary;
+      @include box-shadow(0, 5px, 38px, 5px, rgba($primary, 0.15));
     }
   }
 
@@ -48,12 +51,12 @@ nav#main {
       @include md {
         font-size: 0.9rem;
         
-        &:nth-child(3n+1).current { background-color: $c-secondary; }
-        &:nth-child(3n+2).current { background-color: $c-copy; }
-        &:nth-child(3n+3).current { background-color: $c-primary; }
+        &:nth-child(3n+1).current { background-color: $secondary; }
+        &:nth-child(3n+2).current { background-color: $copy; }
+        &:nth-child(3n+3).current { background-color: $primary; }
         &.current {
           width: 20px; height: 20px;
-          margin: 0 calc($m-xs/3);
+          margin: 0 calc($xs/3);
           padding: 0;
           font-size: 0;
         }
@@ -62,7 +65,7 @@ nav#main {
   }
 
   &.mobile {
-    padding-left: $m-xs;
+    padding-left: $xs;
 
     // darkening background-overlay
     &::before {
@@ -71,19 +74,19 @@ nav#main {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background-color: $c-copy;
+      background-color: $copy;
       opacity: 0.1;
       @include transition(2s, ease-out);
     }
 
     .nav-list {
       position: absolute;
-      bottom: calc(100% + $m-sm);
+      bottom: calc(100% + $sm);
       z-index: 1;
       flex-direction: column-reverse;
       align-items: flex-start;
-      gap: calc($m-xs/2);
-      // margin-bottom: $m-sm;  
+      gap: calc($xs/2);
+      // margin-bottom: $sm;  
 
       .nav-item:not(.current) {
         opacity: 1;
@@ -99,11 +102,11 @@ nav#main {
       padding: 0;
       width: 40px; height: 40px;
       
-      @include box-shadow(0, 7px, 45px, 0px, rgba($c-primary, 0.3));
+      @include box-shadow(0, 7px, 45px, 0px, rgba($primary, 0.3));
       background-image: url('../assets/arrow-up.svg');
       background-repeat: no-repeat;
       background-position: center;
-      background-color: $c-light;
+      background-color: $light;
       border-radius: 100px; 
 
       transform: scale(1.15) rotate(0deg);
@@ -116,7 +119,7 @@ nav#main {
         transition-delay: 0s;
       }
       .collapser {
-        @include box-shadow(5px, 0px, 40px, 1px, rgba($c-primary, 0.2));
+        @include box-shadow(5px, 0px, 40px, 1px, rgba($primary, 0.2));
         transform: scale(1) rotate(90deg);
       }
       &::before {

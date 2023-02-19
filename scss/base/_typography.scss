@@ -1,0 +1,91 @@
+@use '../abstracts' as a;
+
+:root {
+  --type-mult: 1.125;
+  @include a.md { --type-mult: 1; }
+  @include a.sm { --type-mult: 0.7; }
+}
+
+p, .copy {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6em;
+  margin-bottom: a.$xxs;
+  &.mono, &.small {
+    font-family: 'Basier Circle Mono', monospace;
+  }
+  &.small {
+    font-size: 0.8rem;
+  }
+}
+a {
+  color: a.$primary-dark;
+  border-bottom: 0.1em solid a.$primary-dark;
+  text-decoration: none;
+  transition: 0.25s ease-out;
+}
+a:hover {
+  color: a.$primary;
+  border-bottom: 0.1em solid a.$primary;
+}
+
+.hero, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  line-height: 1em;
+  overflow-wrap: anywhere;
+  a {
+    color: inherit;
+    border-bottom-color: a.$copy;
+  }
+}
+.hero, .h1, .h2, .h3 {
+  text-transform: lowercase;
+}
+.hero {
+  font-size: calc(pow(var(--type-mult), 6));
+  font-weight: 700;
+  &.small {
+    font-weight: 400;
+  }
+  // switching to h1-size
+  @include a.sm { font-size: calc(5rem * var(--type-mult)); }
+}
+h1, .h1 {
+  font-size: calc(5rem * var(--type-mult));
+  font-weight: 500;
+  // switch to h2-size
+  @include a.sm { font-size: calc(4rem * var(--type-mult)); }
+}
+h2, .h2 {
+  font-size: calc(4rem * var(--type-mult));
+  font-weight: 700;
+}
+h3, .h3 {
+  font-size: calc(3rem * var(--type-mult));
+  font-weight: 500;
+}
+h4, .h4 {
+  font-size: calc(2rem * var(--type-mult));
+  font-weight: 700;
+  &.small {
+    font-weight: 400;
+  }
+}
+h5, .h5 {
+  font-size: max(1rem, calc(1rem * var(--type-mult)));
+  font-weight: 500;
+  &.small {
+    font-weight: 400;
+  }
+}
+.subtitle {
+  @extend .h5;
+  font-weight: 400;
+}
+
+b, .bold, .big  { font-weight: 700; }
+em, i { font-style: italic; }
+.regular { font-weight: 400; }
+
+.ds {
+  text-shadow: 0px 17px 40px rgba(0 0 0);
+}
