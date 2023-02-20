@@ -16,7 +16,7 @@
     flex-direction: column;
     gap: calc($xs);
 
-    > h2 { 
+    > h2 {
       @extend .h3;
 
       > a { border: none; }

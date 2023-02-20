@@ -44,24 +44,25 @@
 
     img { max-width: 100%; }
     
-    h2, 
+    h2,
     .h2 {
       margin-top: $md;
       margin-bottom: $sm;
     }
 
-    h3, 
+    h3,
     .h3 {
       margin-top: calc(1.5 * $xs);
       margin-bottom: $xs;
     }
 
-    h4, 
+    h4,
     .h4 { margin-bottom: calc($xs/2); }
 
-    iframe.youtube, 
+    iframe.youtube,
     iframe.yt {
-      width: 100%; height: auto;
+      width: 100%;
+      height: auto;
       aspect-ratio: calc(3/2);
       margin-top: $xs;
       margin-bottom: $xs;

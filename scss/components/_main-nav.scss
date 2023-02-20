@@ -10,7 +10,7 @@ nav#main {
   @include sm { padding: 0 calc($xs/2); }
 
   .nav-list {
-    display: flex; 
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -51,15 +51,16 @@ nav#main {
       @include md {
         font-size: 0.9rem;
         
-        &:nth-child(3n+1).current { background-color: $secondary; }
-        &:nth-child(3n+2).current { background-color: $copy; }
-        &:nth-child(3n+3).current { background-color: $primary; }
         &.current {
-          width: 20px; height: 20px;
+          width: 20px;
+          height: 20px;
           margin: 0 calc($xs/3);
           padding: 0;
           font-size: 0;
         }
+        &:nth-child(3n+1).current { background-color: $secondary; }
+        &:nth-child(3n+2).current { background-color: $copy; }
+        &:nth-child(3n+3).current { background-color: $primary; }
       }
     }
   }
@@ -67,13 +68,15 @@ nav#main {
   &.mobile {
     padding-left: $xs;
 
-    // darkening background-overlay
+    /* darkening background-overlay */
     &::before {
       content: "";
       display: block;
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       background-color: $copy;
       opacity: 0.1;
       @include transition(2s, ease-out);
@@ -87,27 +90,26 @@ nav#main {
       align-items: flex-start;
       gap: calc($xs/2);
 
-      .nav-item:not(.current) {
-        opacity: 1;
-      }
       .nav-item {
         @include transition(1s, ease-out);
         transition-delay: calc(var(--n) * 0.2s);
+      }
+      .nav-item:not(.current) {
+        opacity: 1;
       }
     }
 
     .collapser {
       order: -1;
       padding: 0;
-      width: 40px; height: 40px;
-      
+      width: 40px;
+      height: 40px;
       @include box-shadow(0, 7px, 45px, 0px, rgba($primary, 0.3));
       background-image: url("../assets/arrow-up.svg");
       background-repeat: no-repeat;
       background-position: center;
       background-color: $light;
-      border-radius: 100px; 
-
+      border-radius: 100px;
       transform: scale(1.15) rotate(0deg);
       @include transition(0.7s, ease-out);
     }

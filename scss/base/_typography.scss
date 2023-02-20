@@ -13,7 +13,7 @@ p,
   line-height: 1.6em;
   margin-bottom: a.$xxs;
 
-  &.mono, 
+  &.mono,
   &.small {
     font-family: "Basier Circle Mono", monospace;
   }
@@ -22,18 +22,18 @@ p,
   }
 }
 
-.hero, 
-h1, 
-.h1, 
-h2, 
-.h2, 
-h3, 
-.h3, 
-h4, 
-.h4, 
-h5, 
-.h5, 
-h6, 
+.hero,
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
 .h6 {
   line-height: 1em;
   overflow-wrap: anywhere;
@@ -44,9 +44,9 @@ h6,
   }
 }
 
-.hero, 
-.h1, 
-.h2, 
+.hero,
+.h1,
+.h2,
 .h3 {
   text-transform: lowercase;
 }
@@ -61,7 +61,7 @@ h6,
   @include a.sm { font-size: calc(5rem * var(--type-mult)); }
 }
 
-h1, 
+h1,
 .h1 {
   font-size: calc(5rem * var(--type-mult));
   font-weight: 500;
@@ -69,19 +69,19 @@ h1,
   @include a.sm { font-size: calc(4rem * var(--type-mult)); }
 }
 
-h2, 
+h2,
 .h2 {
   font-size: calc(4rem * var(--type-mult));
   font-weight: 700;
 }
 
-h3, 
+h3,
 .h3 {
   font-size: calc(3rem * var(--type-mult));
   font-weight: 500;
 }
 
-h4, 
+h4,
 .h4 {
   font-size: calc(2rem * var(--type-mult));
   font-weight: 700;
@@ -91,7 +91,7 @@ h4,
   }
 }
 
-h5, 
+h5,
 .h5 {
   font-size: max(1rem, calc(1rem * var(--type-mult)));
   font-weight: 500;
