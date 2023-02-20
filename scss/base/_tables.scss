@@ -1,0 +1,26 @@
+@use "../abstracts" as a;
+@use "typography" as *;
+
+table {
+  margin-top: a.$sm;
+  margin-bottom: a.$sm;
+  background-color: a.$light;
+  border-collapse: collapse;
+
+  tbody {
+    padding: a.$xs;
+
+    tr {
+      td {
+        padding: calc(a.$xs / 2);
+        border: 2px solid #fff;
+      }
+
+      th {
+        @extend .h3;
+        padding: a.$xs calc(a.$xs / 2);
+        line-height: 1em;
+      }
+    }
+  }
+}

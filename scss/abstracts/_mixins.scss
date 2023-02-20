@@ -1,0 +1,36 @@
+@use "breakpoints" as bp;
+@use "sizes" as *;
+@use "colors" as *;
+
+@mixin sm { @media (max-width: #{$w4}) { @content; } }
+@mixin md { @media (max-width: #{bp.$md}) { @content; } }
+@mixin md-min { @media (min-width: #{bp.$md}) { @content; } }
+@mixin lg { @media (max-width: #{bp.$lg}) { @content; } }
+@mixin xl { @media (max-width: #{bp.$xl}) { @content; } }
+
+@mixin scrollbar( $foreground-color: $primary-dark, $background-color: transparent ) {
+  // For Chrome & Safari
+  &::-webkit-scrollbar {
+    width: 6px; height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background: $foreground-color;
+  }
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // Standard version (Firefox only for now)
+  scrollbar-color: $foreground-color $background-color;
+}
+@mixin transition( $t, $easing: linear, $property: all) {
+  transition: $property $t $easing;
+  -webkit-transition: $property $t $easing;
+  -moz-transition: $property $t $easing;
+  -o-transition: $property $t $easing;
+}
+@mixin box-shadow($x, $y, $blur, $spread, $color) {
+  -webkit-box-shadow: $x $y $blur $spread $color;
+  box-shadow: $x $y $blur $spread $color;
+}

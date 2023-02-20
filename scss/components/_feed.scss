@@ -1,0 +1,48 @@
+@use "../abstracts" as *;
+@use "../base" as *;
+
+.feed {
+  @extend .w4;
+  display: flex;
+  flex-direction: column;
+  gap: $md;
+
+  .feed-item,
+  .feed-item > * {
+    display: flex;
+  }
+
+  .feed-item {
+    flex-direction: column;
+    gap: calc($xs);
+
+    > h2 {
+      @extend .h3;
+
+      > a { border: none; }
+    }
+
+    > figure {
+      order: -1;
+
+      > img { width: 100%; }
+    }
+
+    > .info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: $xs;
+      font-size: 0.9em;
+      color: $grey;
+    }
+
+    .btn.more {
+      @extend .light;
+      margin: 0;
+      align-self: flex-end;
+    }
+  }
+
+  @include md { padding: 0 calc($xs); }
+}
