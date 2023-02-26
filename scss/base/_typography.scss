@@ -101,7 +101,8 @@ h5,
   }
 }
 
-.subtitle {
+.subtitle,
+.subtitle * {
   @extend .h5;
   font-weight: 400;
 }
