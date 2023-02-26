@@ -8,13 +8,14 @@
 
   > .social {
     all: unset;
-    width: 30px; height: 30px;
+    width: 30px;
+    height: 30px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 1000px;
     
-    &#mail { background-image: url('../assets/mail.svg'); }
-    &#github { background-image: url('../assets/github.svg'); }
-    &#linkedin { background-image: url('../assets/linkedin.svg'); }
+    &#mail { background-image: url("../assets/mail.svg"); }
+    &#github { background-image: url("../assets/github.svg"); }
+    &#linkedin { background-image: url("../assets/linkedin.svg"); }
   }
 }
