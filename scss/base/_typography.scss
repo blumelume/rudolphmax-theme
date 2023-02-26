@@ -104,6 +104,7 @@ h5,
 .subtitle,
 .subtitle * {
   @extend .h5;
+  line-height: 1.6em;
   font-weight: 400;
 }
 
