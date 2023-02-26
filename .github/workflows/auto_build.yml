@@ -36,7 +36,9 @@ jobs:
             fetch-depth: 1
 
       - name: Move compiled CSS to path within build branch
-        run: mv /tmp/rudolphmax.com-theme/css/ css/
+        run: |
+          rm -rf css
+          mv /tmp/rudolphmax.com-theme/css/ css/
 
       - name: Add and Commit changes to main branch
         run: |
