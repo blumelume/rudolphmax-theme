@@ -1,5 +1,5 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block content %}
-    {{ page.content|raw }}
+    {% include 'modular/text.html.twig' with { 'content' : page.content } %}
 {% endblock %}
