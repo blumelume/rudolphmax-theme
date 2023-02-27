@@ -9,6 +9,6 @@ window.addEventListener('load', function () {
     document.getElementsByClassName('jump-stage')
   ).forEach( components.initializeJumpStageButton )
   
-  components.insertYear()
+  components.insertYear('cr-year')
 
 })
