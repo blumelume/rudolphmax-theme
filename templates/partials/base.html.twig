@@ -18,8 +18,7 @@
     {% endblock %}
 
     {% block javascripts %}
-        {% do assets.addJs('theme://js/main.js', 101) %}
-        {% do assets.addJs('theme://js/main_nav.js') %}
+        {% do assets.addJsModule('theme://js/main.js', 100) %}
     {% endblock %}
 
     {% block assets deferred %}
