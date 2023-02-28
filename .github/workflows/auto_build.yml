@@ -26,8 +26,8 @@ jobs:
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.4.11
         with:
-          source: css/global.scss
-          destination: /tmp/rudolphmax.com-theme/css/global.css
+          source: scss/styles.scss
+          destination: /tmp/rudolphmax.com-theme/css/styles.css
 
       - name: Checkout destination Git branch
         uses: actions/checkout@v2
@@ -36,13 +36,15 @@ jobs:
             fetch-depth: 1
 
       - name: Move compiled CSS to path within build branch
-        run: mv /tmp/rudolphmax.com-theme/css/ css-compiled/
+        run: |
+          rm -rf css
+          mv /tmp/rudolphmax.com-theme/css/ css/
 
       - name: Add and Commit changes to main branch
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
-          git add -f css-compiled/*
+          git add -f css/*
           git commit -m 'Automation : Compiled SCSS'
 
       - name: Push changes

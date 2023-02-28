@@ -26,8 +26,6 @@ jobs:
     name: Lint Twig
     runs-on: ubuntu-latest
     steps:
-      - uses: php-actions/composer@v6
-      
       - name: Install Twig Lint
         run: composer global require "asm89/twig-lint" "@stable"
       
@@ -39,24 +37,24 @@ jobs:
           submodules: true
 
       - name: Run Twig Lint
-        run: ~/.composer/vendor/bin/twig-lint lint templates/*
+        run: ~/.composer/vendor/bin/twig-lint lint "templates/*"
 
-  check_scss:
-    name: Check SCSS
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout source Git branch
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
-          fetch-depth: 10
-          submodules: true
+  # check_scss:
+  #   name: Check SCSS
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout source Git branch
+  #       uses: actions/checkout@v2
+  #       with:
+  #         ref: ${{ github.head_ref }}
+  #         fetch-depth: 10
+  #         submodules: true
 
-      - name: Make destination directory for compiled CSS
-        run: mkdir -vp /tmp/rudolphmax.com-theme/css/
+  #     - name: Make destination directory for compiled CSS
+  #       run: mkdir -vp /tmp/rudolphmax.com-theme/css/
 
-      - name: Compile CSS from SCSS files
-        uses: gha-utilities/sass-build@v0.4.11
-        with:
-          source: css/global.scss
-          destination: /tmp/rudolphmax.com-theme/css/global.css
+  #     - name: Compile CSS from SCSS files
+  #       uses: gha-utilities/sass-build@v0.4.11
+  #       with:
+  #         source: css/global.scss
+  #         destination: /tmp/rudolphmax.com-theme/css/global.css
