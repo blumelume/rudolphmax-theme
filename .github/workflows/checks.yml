@@ -20,7 +20,7 @@ jobs:
         env:
           VALIDATE_JAVASCRIPT_STANDARD: true
           VALIDATE_ALL_CODEBASE: false
-          CSS_FILE_NAME: .stylelintrc.yml
+          CSS_FILE_NAME: .stylelintrc.json
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
