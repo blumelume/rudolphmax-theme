@@ -1,24 +1,12 @@
+import * as mainNav from './modules/main-nav.js'
+import * as components from './modules/components.js'
+
+mainNav.initializeMainNav()
+
 window.addEventListener('load', function () {
-  Array.from(document.getElementsByClassName('jump-stage')).forEach((el) => {
-    el.setAttribute('aria-label', 'jump from stage to content')
+  Array.from(
+    document.getElementsByClassName('jump-stage')
+  ).forEach(components.initializeJumpStageButton)
 
-    el.addEventListener('click', (e) => {
-      const targetStage = e.target.parentNode
-
-      if (targetStage) {
-        const scrollTarget = targetStage.getBoundingClientRect().bottom
-
-        window.scroll({
-          behavior: 'smooth',
-          left: 0,
-          top: scrollTarget - 50
-        })
-      }
-    })
-  })
-
-  const crYear = document.getElementById('cr-year')
-  if (crYear) {
-    crYear.innerHTML = new Date().getFullYear()
-  }
+  components.insertYear('cr-year')
 })
