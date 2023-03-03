@@ -27,7 +27,7 @@
     {% endblock %}
 </head>
 
-<body template="{{ page.template|raw }}">
+<body template="{{ page.template|raw }}" name="{{ page.title|raw }}">
 
     {% block body %}
         <div class="content{{ page.header.classes|e }}">

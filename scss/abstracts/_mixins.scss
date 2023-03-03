@@ -34,3 +34,9 @@
   -webkit-box-shadow: $x $y $blur $spread $color;
   box-shadow: $x $y $blur $spread $color;
 }
+@mixin background-image($src, $pos: center, $size: auto, $repeat: no-repeat) {
+  background-image: $src;
+  background-position: $pos;
+  background-size: $size;
+  background-repeat: $repeat;
+}

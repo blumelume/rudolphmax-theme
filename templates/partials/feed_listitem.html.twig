@@ -1,9 +1,14 @@
+{% set subtitle = page.header.subtitle|defined(false) %}
+
 <div class="feed-item">
 {% block feed_item %}
 
   {% include 'partials/feed_title_image.html.twig' with { 'page' : page } %}
 
   <h2><a href="{{ page.url|e }}">{{ page.title }}</a></h2>
+  {% if subtitle %}
+    <span class="subtitle">{{ subtitle }}</span>
+  {% endif %}
 
   <div class="info">
     {% if page.header.date %} <span class="info-date">{{ page.header.date|e }}</span> {% endif %}
@@ -16,7 +21,7 @@
   {% endif %}
   
   <a class="btn slim more" role="button" aria-label="read article" href="{{ page.url|e }}" target="__blank">
-    read more
+    <span>read more</span>
   </a>
 
 {% endblock %}
