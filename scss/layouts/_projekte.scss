@@ -12,7 +12,7 @@ body[template="feed"][name="projekte"] {
       gap: calc(2*$lg);
 
       @include md {
-        max-width: $w4;
+        width: $w4;
         padding-top: 0;
         gap: $md;
       }
