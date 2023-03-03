@@ -25,7 +25,7 @@ export function initializeJumpStageButton (button) {
         behavior: 'smooth',
         left: 0,
         top: scrollTarget - 50
-      });
+      })
     }
   })
 }

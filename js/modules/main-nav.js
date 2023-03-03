@@ -1,6 +1,6 @@
 /**
  * Initializes the main navbar with event-listeners for window-resize & -load
- * and click event-listener for the collapser button, which is used in the mobile nav. 
+ * and click event-listener for the collapser button, which is used in the mobile nav.
  * The main navbar collapses into the mobile version on window-resize.
  */
 export function initializeMainNav () {
@@ -14,7 +14,7 @@ export function initializeMainNav () {
     }
   }
 
-  ['load', 'resize'].forEach( (e) => {
+  ['load', 'resize'].forEach((e) => {
     window.addEventListener('resize', mobilize)
   })
 
