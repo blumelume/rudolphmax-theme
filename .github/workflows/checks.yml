@@ -23,7 +23,6 @@ jobs:
           CSS_FILE_NAME: .stylelintrc.yml
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: standard --fix
 
   lint_twig:
     name: Lint Twig
