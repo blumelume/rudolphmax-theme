@@ -1,16 +1,18 @@
 {% if (page.header.image and page.header.image.src) %}
 {% set title_image = page.url(true)|e ~ '/' ~ page.header.image.src %}
 
-<figure>
-  
-  <img src="{{ title_image }}">
-  {% if (page.header.image.caption and showCaption|defined(false)) %}
-  <figcaption>
-    {{ page.header.image.caption|e }}
-  </figcaption>
-  {% endif %}
+<div class="image-wrapper">
+  <figure>
+    
+    <img src="{{ title_image }}">
+    {% if (page.header.image.caption and showCaption|defined(false)) %}
+    <figcaption>
+      {{ page.header.image.caption|e }}
+    </figcaption>
+    {% endif %}
 
-</figure>
+  </figure>
+</div>
+
 {% endif %}
-
 {# TODO: image 'object' #}
