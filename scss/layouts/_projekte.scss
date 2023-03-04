@@ -23,8 +23,30 @@ body[template="feed"][name="projekte"] {
         column-gap: calc(1.5*$sm);
         grid-template-columns: 1fr 0.45fr;
         grid-template-rows: minmax($xs, 1fr) repeat(5, auto) minmax($xs, 1fr);
-
         @include lg { grid-template-columns: 1fr 0.75fr; }
+
+        &:before {
+          opacity: 0;
+          content: "";
+          display: block;
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100vw;
+          height: 100vh;
+          background-color: $primary-dark;
+          z-index: -1;
+          pointer-events: none;
+          @include transition(0.8s, ease-out);
+        }
+
+        &:hover {
+          z-index: 2;
+          
+          &:before { opacity: 0.035; }
+        }
 
         > .image-wrapper {
           grid-row-start: 1;
