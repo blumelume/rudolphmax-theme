@@ -22,10 +22,10 @@
       > a { border: none; }
     }
 
-    > figure {
+    > .image-wrapper {
       order: -1;
 
-      > img { width: 100%; }
+      > figure img { width: 100%; }
     }
 
     > .info {
