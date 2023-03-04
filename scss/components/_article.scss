@@ -23,14 +23,13 @@
       }
     }
 
-    > figure {
+    > .image-wrapper {
       gap: $xs;
       margin-top: $md;
       margin-bottom: $md;
 
-      > img { width: 100%; }
-
-      > figcaption {
+      > figure img { width: 100%; }
+      > figure figcaption {
         @extend .subtitle;
         color: $grey;
         margin-top: $xs;
