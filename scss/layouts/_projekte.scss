@@ -7,10 +7,11 @@ body[template="feed"][name="projekte"] {
     .feed {
       @extend .w1; 
       padding-top: $lg;
-      padding-left: $xs;
-      padding-right: $xs;
-      gap: calc(2*$lg);
+      padding-left: calc(1.5*$xs);
+      padding-right: calc(1.5*$xs);
+      gap: calc(1.5*$lg);
 
+      @include lg { gap: $lg; }
       @include md {
         width: $w4;
         padding-top: 0;
@@ -23,22 +24,28 @@ body[template="feed"][name="projekte"] {
         grid-template-columns: 1fr 0.45fr;
         grid-template-rows: minmax($xs, 1fr) repeat(5, auto) minmax($xs, 1fr);
 
-        > figure {
+        @include lg { grid-template-columns: 1fr 0.75fr; }
+
+        > .image-wrapper {
           grid-row-start: 1;
           grid-row-end: span 7;
-          aspect-ratio: calc(4/3);
+          overflow: hidden;
           border-radius: 10px;
-          overflow-y: scroll;
-          @include scrollbar(rgba($primary-dark, 0.7));
           @include box-shadow(0px, 35px, 60px, 0px, rgba($primary, 0.05));
           @include transition(0.8s, ease-out);
 
           &:hover {
             @include box-shadow(0px, 35px, 60px, 0px, rgba($primary, 0.11));
           }
-          img {
-            height: max-content;
-            object-fit: cover;
+          figure {
+            aspect-ratio: calc(4/3);
+            overflow-y: scroll;
+            @include scrollbar(rgba($primary-dark, 0.7));
+
+            img {
+              height: max-content;
+              object-fit: cover;
+            }
           }
         }
 
