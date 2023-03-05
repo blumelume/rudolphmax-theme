@@ -1,4 +1,4 @@
-name: Rudolphmax
+name: rudolphmax
 slug: rudolphmax
 type: theme
 version: 0.1.0
@@ -7,11 +7,11 @@ icon: rebel
 author:
   name: Maximilian Rudolph
   email: business@rudolphmax.com
-homepage: https://github.com/blumelume/grav-theme-rudolphmax
-demo: http://demo.yoursite.com
-keywords: grav, theme, etc
-bugs: https://github.com/blumelume/grav-theme-rudolphmax/issues
-readme: https://github.com/blumelume/grav-theme-rudolphmax/blob/develop/README.md
+homepage: https://github.com/blumelume/rudolphmax-theme
+demo: http://rudolpghmax.com
+keywords: grav, theme
+bugs: https://github.com/blumelume/rudolphmax-theme
+readme: https://github.com/blumelume/rudolphmax-theme
 license: MIT
 
 dependencies:
