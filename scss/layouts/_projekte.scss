@@ -64,10 +64,7 @@ body[template="feed"][name="projekte"] {
             overflow-y: scroll;
             @include scrollbar(rgba($primary-dark, 0.7));
 
-            img {
-              height: max-content;
-              object-fit: cover;
-            }
+            img { object-fit: cover; }
           }
         }
 
