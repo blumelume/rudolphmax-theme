@@ -1,8 +1,14 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block content %}
-    <div class="lead text-center">
-        <h1>Error!</h1>
+<div class="stage"> <div class="stage-content w4">
+    <h1 class="hero c-primary">
+        {{ page.header.http_response_code|raw }}
+    </h1>
+    <div class="space-xs"></div>
+    <p class="h3 c-primary-dark">
         {{ page.content|raw }}
-    </div>
+    </p>
+    <a aria-label="back to home" href="/">zurück</a>
+</div> </div>
 {% endblock %}
