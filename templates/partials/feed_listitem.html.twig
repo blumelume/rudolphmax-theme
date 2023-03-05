@@ -1,11 +1,19 @@
 {% set subtitle = page.header.subtitle|defined(false) %}
+{% set linkTarget = page.header.link|e|defined(page.url|e) %}
 
 <div class="feed-item">
 {% block feed_item %}
 
   {% include 'partials/feed_title_image.html.twig' with { 'page' : page } %}
 
-  <h2><a href="{{ page.url|e }}">{{ page.title }}</a></h2>
+  <h2>
+    {% if linkTarget != false %}
+      <a href="{{ linkTarget }}" target=_blank"">{{ page.title|raw }}</a>
+    {% else %}
+      {{ page.title|raw }}
+    {% endif %}
+  </h2>
+
   {% if subtitle %}
     <span class="subtitle">{{ subtitle }}</span>
   {% endif %}
@@ -20,9 +28,11 @@
     <div class="teaser"> {{ teaser_text|e }} </div>
   {% endif %}
   
-  <a class="btn slim more" role="button" aria-label="read article" href="{{ page.url|e }}" target="__blank">
+  {% if linkTarget != false %}
+  <a class="btn slim more" role="button" aria-label="read article" href="{{ linkTarget }}" target="_blank">
     <span>read more</span>
   </a>
+  {% endif %}
 
 {% endblock %}
 </div>
