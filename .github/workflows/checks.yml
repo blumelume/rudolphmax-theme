@@ -31,11 +31,9 @@ jobs:
         run: composer global require "asm89/twig-lint" "@stable"
       
       - name: Checkout source Git branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          ref: ${{ github.head_ref }}
-          fetch-depth: 10
-          submodules: true
+          fetch-depth: 0
 
       - name: Run Twig Lint
         run: ~/.composer/vendor/bin/twig-lint lint "templates/*"
