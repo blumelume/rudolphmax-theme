@@ -52,8 +52,9 @@ h6,
 }
 
 .hero {
-  font-size: calc(pow(var(--type-mult), 6));
+  font-size: calc(6rem * var(--type-mult));
   font-weight: 700;
+
   &.small {
     font-weight: 400;
   }
@@ -85,7 +86,7 @@ h4,
 .h4 {
   font-size: calc(2rem * var(--type-mult));
   font-weight: 700;
-  
+
   &.small {
     font-weight: 400;
   }
@@ -95,7 +96,7 @@ h5,
 .h5 {
   font-size: max(1rem, calc(1rem * var(--type-mult)));
   font-weight: 500;
-  
+
   &.small {
     font-weight: 400;
   }
@@ -122,10 +123,11 @@ a {
 
 b,
 .bold,
-.big  { font-weight: 700; }
+.big { font-weight: 700; }
+.light { font-weight: 300; }
 
 em,
 i { font-style: italic; }
 
 .regular { font-weight: 400; }
-.ds { text-shadow: 0px 17px 40px rgba(0, 0, 0, 1); }
+.ds { text-shadow: 0px 17px 40px rgba(0 0 0 / 1); }
