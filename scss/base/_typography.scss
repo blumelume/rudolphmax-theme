@@ -52,7 +52,7 @@ h6,
 }
 
 .hero {
-  font-size: calc(pow(var(--type-mult), 6));
+  font-size: calc(6rem * var(--type-mult));
   font-weight: 700;
   &.small {
     font-weight: 400;
@@ -123,6 +123,7 @@ a {
 b,
 .bold,
 .big  { font-weight: 700; }
+.light { font-weight: 300; }
 
 em,
 i { font-style: italic; }
