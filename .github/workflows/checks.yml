@@ -38,8 +38,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Copy files to temporary folder
+        run: |
+          mkdir -vp /tmp/rudolphmax-theme/templates/ 
+          cp templates/ /tmp/rudolphmax-theme/templates/
+
       - name: Run Twig Lint
-        run: ~/.composer/vendor/bin/twig-lint lint "templates/*"
+        run: ~/.composer/vendor/bin/twig-lint lint "/tmp/rudolphmax-theme/templates/*"
 
   # check_scss:
   #   name: Check SCSS
