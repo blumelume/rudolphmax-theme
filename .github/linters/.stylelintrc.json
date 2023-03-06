@@ -5,6 +5,6 @@
   "rules": {
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
-    "scss/at-extend-no-missing-placeholder": false
+    "scss/at-extend-no-missing-placeholder": true
   }
 }
