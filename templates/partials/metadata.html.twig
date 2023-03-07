@@ -1,0 +1,4 @@
+{% set metas = site.metadata | merge(page.header.metadata|defined([])) %}
+{% for name, content in metas %}
+  <meta name="{{name}}" content="{{content}}">
+{% endfor %}
