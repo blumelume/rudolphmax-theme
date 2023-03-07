@@ -44,7 +44,7 @@ jobs:
           cp -r templates/ /tmp/rudolphmax-theme/templates/
 
       - name: Run Twig Lint
-        run: ~/.composer/vendor/bin/twig-lint lint "/tmp/rudolphmax-theme/templates/*"
+        run: ~/.composer/vendor/bin/twig-lint lint "/tmp/rudolphmax-theme/templates/"
 
   # check_scss:
   #   name: Check SCSS
