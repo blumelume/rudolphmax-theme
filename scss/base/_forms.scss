@@ -1,35 +1,6 @@
 @use "../abstracts" as a;
 @use "typography" as *;
 
-// Lists
-ul, ol {
-  list-style-position: inside;
-
-  li {
-    ul,
-    ol {
-      margin-left: 1.5em;
-    }
-  }
-}
-ul {
-  list-style-type: disc;
-  
-  ul {
-    list-style-type: circle;
-    ul { list-style-type: revert; }
-  }
-}
-ol {
-  list-style-type: decimal;
-  
-  ol {
-    list-style-type: lower-alpha;
-    ol { list-style-type: upper-roman; }
-  }
-}
-
-// Buttons / Forms
 button, .button, .btn {
   border: none;
   text-decoration: none !important;
