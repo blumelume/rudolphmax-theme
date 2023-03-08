@@ -24,6 +24,18 @@ p,
   }
 }
 
+a {
+  color: a.$primary-dark;
+  border-bottom: 0.1em solid a.$primary-dark;
+  text-decoration: none;
+  transition: 0.25s ease-out;
+  
+  &:hover {
+    color: a.$primary;
+    border-bottom: 0.1em solid a.$primary;
+  }
+}
+
 .hero,
 h1,
 .h1,
@@ -39,6 +51,7 @@ h6,
 .h6 {
   line-height: 1em;
   overflow-wrap: anywhere;
+  &.small { font-weight: 400; }
 
   a {
     color: inherit;
@@ -53,69 +66,65 @@ h6,
   text-transform: lowercase;
 }
 
-.hero {
+.hero,
+%hero {
   font-size: calc( a.pow($type-mult, 6) * 1rem);
   font-weight: 700;
-
-  &.small { font-weight: 400; }
 }
 
 h1,
-.h1 {
+.h1,
+%h1 {
   font-size: calc( a.pow($type-mult, 5) * 1rem);
   font-weight: 500;
 }
 
 h2,
-.h2 {
+.h2,
+%h2 {
   font-size: calc( a.pow($type-mult, 4) * 1rem);
   font-weight: 400;
 }
 
 h3,
-.h3 {
+.h3,
+%h3 {
   font-size: calc( a.pow($type-mult, 3) * 1rem);
   font-weight: 700;
 }
 
 h4,
-.h4 {
+.h4,
+%h4 {
   font-size: calc( a.pow($type-mult, 2) * 1rem);
-  font-weight: 700;
-
-  &.small { font-weight: 400; }
+  font-weight: 500;
 }
 
 h5,
-.h5 {
+.h5,
+%h5 {
   font-size: calc( a.pow($type-mult, 1) * 1rem);
-  font-weight: 500;
+  font-weight: 700;
+}
 
-  &.small { font-weight: 400; }
+h6,
+.h6,
+%h6 {
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .subtitle,
 .subtitle * {
-  @extend .h5;
+  @extend %h5;
   line-height: 1.6em;
   font-weight: 400;
-}
-
-a {
-  color: a.$primary-dark;
-  border-bottom: 0.1em solid a.$primary-dark;
-  text-decoration: none;
-  transition: 0.25s ease-out;
-  
-  &:hover {
-    color: a.$primary;
-    border-bottom: 0.1em solid a.$primary;
-  }
 }
 
 b,
 .bold,
 .big { font-weight: 700; }
+
 .light { font-weight: 300; }
 
 em,
