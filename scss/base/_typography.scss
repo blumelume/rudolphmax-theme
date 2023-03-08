@@ -9,6 +9,7 @@ html {
   color: a.$copy;
 
   @include a.md { font-size: 14px; }
+
   @include a.sm { font-size: 12px; }
 }
 
@@ -26,6 +27,7 @@ p,
   &.small { font-size: 0.8rem; }
 
   @include a.md { font-size: 1.15rem; }
+
   @include a.sm { font-size: 1.35rem; }
 }
 
@@ -122,6 +124,7 @@ h6,
 .subtitle,
 .subtitle * {
   @extend %h5;
+
   line-height: 1.6em;
   font-weight: 400;
 }
@@ -136,7 +139,7 @@ em,
 i { font-style: italic; }
 
 .regular { font-weight: 400; }
-.ds { text-shadow: 0px 17px 40px rgba(0 0 0 / 1); }
+.ds { text-shadow: 0 17px 40px rgba(0 0 0 / 100%); }
 
 
 /*
@@ -144,7 +147,6 @@ special intext spacing
 */
 .text,
 .article {
-
   .hero,
   h1,
   .h1,
@@ -161,5 +163,4 @@ special intext spacing
     margin-top: max(a.$xs, 0.15em);
     margin-bottom: max(a.$xxs, 0.05em);
   }
-
 }
