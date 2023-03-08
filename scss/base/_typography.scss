@@ -1,7 +1,9 @@
 @use "../abstracts" as a;
 
+$type-mult: 1.414;
+
 :root {
-  --type-mult: 1.125;
+  // --type-mult: 1.333;
   @include a.md { --type-mult: 1; }
   @include a.sm { --type-mult: 0.7; }
 }
@@ -52,54 +54,44 @@ h6,
 }
 
 .hero {
-  font-size: calc(6rem * var(--type-mult));
+  font-size: calc( a.pow($type-mult, 6) * 1rem);
   font-weight: 700;
 
-  &.small {
-    font-weight: 400;
-  }
-  // switching to h1-size
-  @include a.sm { font-size: calc(5rem * var(--type-mult)); }
+  &.small { font-weight: 400; }
 }
 
 h1,
 .h1 {
-  font-size: calc(5rem * var(--type-mult));
+  font-size: calc( a.pow($type-mult, 5) * 1rem);
   font-weight: 500;
-  // switch to h2-size
-  @include a.sm { font-size: calc(4rem * var(--type-mult)); }
 }
 
 h2,
 .h2 {
-  font-size: calc(4rem * var(--type-mult));
-  font-weight: 700;
+  font-size: calc( a.pow($type-mult, 4) * 1rem);
+  font-weight: 400;
 }
 
 h3,
 .h3 {
-  font-size: calc(3rem * var(--type-mult));
-  font-weight: 500;
+  font-size: calc( a.pow($type-mult, 3) * 1rem);
+  font-weight: 700;
 }
 
 h4,
 .h4 {
-  font-size: calc(2rem * var(--type-mult));
+  font-size: calc( a.pow($type-mult, 2) * 1rem);
   font-weight: 700;
 
-  &.small {
-    font-weight: 400;
-  }
+  &.small { font-weight: 400; }
 }
 
 h5,
 .h5 {
-  font-size: max(1rem, calc(1rem * var(--type-mult)));
+  font-size: calc( a.pow($type-mult, 1) * 1rem);
   font-weight: 500;
 
-  &.small {
-    font-weight: 400;
-  }
+  &.small { font-weight: 400; }
 }
 
 .subtitle,
