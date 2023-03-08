@@ -23,8 +23,9 @@ p,
   &.mono,
   &.small {
     font-family: "Basier Circle Mono", monospace;
+    font-size: 0.8rem;
   }
-  &.small { font-size: 0.8rem; }
+  &.big { font-size: 1.2rem; }
 
   @include a.md { font-size: 1.15rem; }
 
@@ -129,9 +130,9 @@ h6,
   font-weight: 400;
 }
 
+
 b,
-.bold,
-.big { font-weight: 700; }
+.bold { font-weight: 700; }
 
 .light { font-weight: 300; }
 
