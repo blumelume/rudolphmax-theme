@@ -132,3 +132,29 @@ i { font-style: italic; }
 
 .regular { font-weight: 400; }
 .ds { text-shadow: 0px 17px 40px rgba(0 0 0 / 1); }
+
+
+/*
+special intext spacing
+*/
+.text,
+.article {
+
+  .hero,
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    margin-top: max(a.$xs, 0.15em);
+    margin-bottom: max(a.$xxs, 0.05em);
+  }
+
+}
