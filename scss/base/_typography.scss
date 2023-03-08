@@ -2,10 +2,14 @@
 
 $type-mult: 1.414;
 
-:root {
-  // --type-mult: 1.333;
-  @include a.md { --type-mult: 1; }
-  @include a.sm { --type-mult: 0.7; }
+html {
+  font-family: "Basier Circle", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: a.$copy;
+
+  @include a.md { font-size: 14px; }
+  @include a.sm { font-size: 12px; }
 }
 
 p,
@@ -19,9 +23,10 @@ p,
   &.small {
     font-family: "Basier Circle Mono", monospace;
   }
-  &.small {
-    font-size: 0.8rem;
-  }
+  &.small { font-size: 0.8rem; }
+
+  @include a.md { font-size: 1.15rem; }
+  @include a.sm { font-size: 1.35rem; }
 }
 
 a {
