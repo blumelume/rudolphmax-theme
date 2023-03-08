@@ -166,18 +166,21 @@ special intext spacing
   }
 }
 
-
-
-ul, ol {
-  list-style-position: inside;
+ul,
+ol {
+  list-style-position: outside;
+  padding-left: 1em;
 
   li {
+    margin: max(a.$xs, 0.15em) 0;
+
     ul,
     ol {
       margin-left: 1.5em;
     }
   }
 }
+
 ul {
   list-style-type: disc;
   
@@ -186,6 +189,7 @@ ul {
     ul { list-style-type: revert; }
   }
 }
+
 ol {
   list-style-type: decimal;
   
