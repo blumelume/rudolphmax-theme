@@ -1,54 +1,30 @@
 @use "../abstracts" as a;
 @use "typography" as *;
 
-// Lists
-ul, ol {
-  list-style-position: inside;
-  li {
-    ul, ol {
-      margin-left: 1.5em;
-    }
-  }
-}
-ul {
-  list-style-type: disc;
-  ul {
-    list-style-type: circle;
-    ul { list-style-type: revert; }
-  }
-}
-ol {
-  list-style-type: decimal;
-  ol {
-    list-style-type: lower-alpha;
-    ol { list-style-type: upper-roman; }
-  }
-}
-
-// Buttons / Forms
 button, .button, .btn {
   border: none;
   text-decoration: none !important;
+
   @include a.transition(0.4s, ease-out);
 
   &.slim {
     @extend .copy, .small;
-    height: max-content; // for buttons inside flex-containers
-    width: max-content;
-    padding: 1.5*a.$xxs a.$xs;
-    line-height: 1em;
 
+    height: max-content;
+    width: max-content;
+    padding: calc(1.5 * a.$xxs) a.$xs;
+    line-height: 1em;
     color: a.$light;
     background-color: a.$primary-dark;
     border-radius: 1000px;
-    &:hover {
-      background-color: a.$primary;
-    }
+
+    &:hover { background-color: a.$primary; }
     
     &.light {
       background-color: a.$light;
       color: a.$primary-dark;
       border: 1px solid a.$primary-dark;
+
       &:hover {
         color: a.$primary;
         border-color: a.$primary;
@@ -57,36 +33,40 @@ button, .button, .btn {
   }
 
   &.color {
-    @extend .h5;
-    // font-size: calc(1rem * var(--type-mult));
+    @extend .copy, .big;
+
+    font-weight: 500;
+    line-height: 1em;
     padding: a.$xs a.$sm;
     background-color: a.$light;
     border-radius: 1000px;
+
     &.primary {
       color: a.$primary;
-      @include a.box-shadow(0px, 0px, 38px, 5px, rgba(a.$primary,0.05));
-      &:hover {
-        @include a.box-shadow(0px, 8px, 38px, 5px, rgba(a.$primary,0.3));
-      }
+
+      @include a.box-shadow(0, 0, 38px, 5px, rgba(a.$primary,0.05));
+
+      &:hover { @include a.box-shadow(0, 8px, 38px, 5px, rgba(a.$primary,0.3)); }
     }
+
     &.secondary {
       color: a.$secondary;
-      @include a.box-shadow(0px, 0px, 38px, 5px, rgba(a.$secondary,0.03));
-      &:hover {
-        @include a.box-shadow(0px, 8px, 38px, 5px, rgba(a.$secondary,0.08));
-      }
+      
+      @include a.box-shadow(0, 0, 38px, 5px, rgba(a.$secondary,0.03));
+
+      &:hover { @include a.box-shadow(0, 8px, 38px, 5px, rgba(a.$secondary,0.08)); }
     }
   }
 
   &.arrow-down {
-    width: 33px; height: 37px;
+    width: 33px;
+    height: 37px;
     background-color: transparent;
     background-image: url("assets/symbols/arrow-down.svg");
     background-position: top center;
     background-repeat: no-repeat;
     border: none;
-    &:hover {
-      background-position: bottom center;
-    }
+    
+    &:hover { background-position: bottom center; }
   }
 }

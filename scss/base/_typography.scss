@@ -1,9 +1,16 @@
 @use "../abstracts" as a;
 
-:root {
-  --type-mult: 1.125;
-  @include a.md { --type-mult: 1; }
-  @include a.sm { --type-mult: 0.7; }
+$type-mult: 1.414;
+
+html {
+  font-family: "Basier Circle", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: a.$copy;
+
+  @include a.md { font-size: 14px; }
+
+  @include a.sm { font-size: 12px; }
 }
 
 p,
@@ -16,97 +23,13 @@ p,
   &.mono,
   &.small {
     font-family: "Basier Circle Mono", monospace;
-  }
-  &.small {
     font-size: 0.8rem;
   }
-}
+  &.big { font-size: 1.2rem; }
 
-.hero,
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
-  line-height: 1em;
-  overflow-wrap: anywhere;
+  @include a.md { font-size: 1.15rem; }
 
-  a {
-    color: inherit;
-    border-bottom-color: a.$copy;
-  }
-}
-
-.hero,
-.h1,
-.h2,
-.h3 {
-  text-transform: lowercase;
-}
-
-.hero {
-  font-size: calc(6rem * var(--type-mult));
-  font-weight: 700;
-
-  &.small {
-    font-weight: 400;
-  }
-  // switching to h1-size
-  @include a.sm { font-size: calc(5rem * var(--type-mult)); }
-}
-
-h1,
-.h1 {
-  font-size: calc(5rem * var(--type-mult));
-  font-weight: 500;
-  // switch to h2-size
-  @include a.sm { font-size: calc(4rem * var(--type-mult)); }
-}
-
-h2,
-.h2 {
-  font-size: calc(4rem * var(--type-mult));
-  font-weight: 700;
-}
-
-h3,
-.h3 {
-  font-size: calc(3rem * var(--type-mult));
-  font-weight: 500;
-}
-
-h4,
-.h4 {
-  font-size: calc(2rem * var(--type-mult));
-  font-weight: 700;
-
-  &.small {
-    font-weight: 400;
-  }
-}
-
-h5,
-.h5 {
-  font-size: max(1rem, calc(1rem * var(--type-mult)));
-  font-weight: 500;
-
-  &.small {
-    font-weight: 400;
-  }
-}
-
-.subtitle,
-.subtitle * {
-  @extend .h5;
-  line-height: 1.6em;
-  font-weight: 400;
+  @include a.sm { font-size: 1.35rem; }
 }
 
 a {
@@ -114,20 +37,144 @@ a {
   border-bottom: 0.1em solid a.$primary-dark;
   text-decoration: none;
   transition: 0.25s ease-out;
-  
-  &:hover {
-    color: a.$primary;
-    border-bottom: 0.1em solid a.$primary;
+}
+
+%lowercase { text-transform: lowercase; }
+
+%heading {
+  line-height: 1em;
+  overflow-wrap: anywhere;
+  &.small { font-weight: 400; }
+
+  a {
+    color: inherit;
+    border-bottom-color: a.$copy;
   }
 }
 
+.text,
+.article {
+  %heading {
+    margin-top: max(a.$xs, 0.15em);
+    margin-bottom: max(a.$xxs, 0.05em);
+  }
+}
+
+.hero,
+%hero {
+  @extend %heading, %lowercase;
+
+  font-size: calc( a.pow($type-mult, 6) * 1rem);
+  font-weight: 700;
+}
+
+h1,
+.h1,
+%h1 {
+  @extend %heading, %lowercase;
+
+  font-size: calc( a.pow($type-mult, 5) * 1rem);
+  font-weight: 500;
+}
+
+h2,
+.h2,
+%h2 {
+  @extend %heading;
+
+  font-size: calc( a.pow($type-mult, 4) * 1rem);
+  font-weight: 400;
+}
+
+h3,
+.h3,
+%h3 {
+  @extend %heading, %lowercase;
+
+  font-size: calc( a.pow($type-mult, 3) * 1rem);
+  font-weight: 700;
+}
+
+h4,
+.h4,
+%h4 {
+  @extend %heading;
+
+  font-size: calc( a.pow($type-mult, 2) * 1rem);
+  font-weight: 500;
+}
+
+h5,
+.h5,
+%h5 {
+  @extend %heading;
+
+  font-size: calc( a.pow($type-mult, 1) * 1rem);
+  font-weight: 700;
+}
+
+h6,
+.h6,
+%h6 {
+  @extend %heading;
+
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.subtitle,
+.subtitle * {
+  @extend %h5;
+
+  line-height: 1.6em;
+  font-weight: 400;
+}
+
+a:hover {
+  color: a.$primary;
+  border-bottom: 0.1em solid a.$primary;
+}
+
 b,
-.bold,
-.big { font-weight: 700; }
+.bold { font-weight: 700; }
+
 .light { font-weight: 300; }
 
 em,
 i { font-style: italic; }
 
 .regular { font-weight: 400; }
-.ds { text-shadow: 0px 17px 40px rgba(0 0 0 / 1); }
+.ds { text-shadow: 0 17px 40px rgba(0 0 0 / 100%); }
+
+ul {
+  list-style-type: disc;
+  
+  ul {
+    list-style-type: circle;
+    ul { list-style-type: revert; }
+  }
+}
+
+ol {
+  list-style-type: decimal;
+  
+  ol {
+    list-style-type: lower-alpha;
+    ol { list-style-type: upper-roman; }
+  }
+}
+
+ul,
+ol {
+  list-style-position: outside;
+  padding-left: 1em;
+
+  li {
+    margin: max(a.$xs, 0.15em) 0;
+
+    ul,
+    ol {
+      margin-left: 1.5em;
+    }
+  }
+}

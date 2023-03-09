@@ -1,12 +1,11 @@
 @use "../abstracts" as *;
 @use "../base" as *;
 
+/*
 html {
-  font-family: "Basier Circle", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  color: $copy;
+
 }
+*/
 
 * {
   margin: 0;
@@ -15,7 +14,6 @@ html {
 }
 
 body {
-
   &[template="default"] {
     > .content {
       padding-top: calc(2.5 * $lg);
@@ -25,6 +23,7 @@ body {
         padding-top: $lg;
         padding-bottom: 0;
       }
+      
       @include sm { padding-top: $md; }
     }
   }
