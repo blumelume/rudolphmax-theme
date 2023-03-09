@@ -13,12 +13,18 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source Git branch
+      - name: Checkout to deploy branch
         uses: actions/checkout@v2
         with:
-          ref: main
+          ref: deploy
           fetch-depth: 10
           submodules: true
+
+      - name: Merge from main
+        run: |
+          git merge main
+          git add -A
+          git commit -m 'Automation : Merged from main'
 
       - name: Make destination directory for compiled CSS
         run: mkdir -vp /tmp/rudolphmax.com-theme/css/
@@ -29,18 +35,12 @@ jobs:
           source: scss/styles.scss
           destination: /tmp/rudolphmax.com-theme/css/styles.css
 
-      - name: Checkout destination Git branch
-        uses: actions/checkout@v2
-        with:
-            ref: main
-            fetch-depth: 1
-
       - name: Move compiled CSS to path within build branch
         run: |
           rm -rf css
           mv /tmp/rudolphmax.com-theme/css/ css/
 
-      - name: Add and Commit changes to main branch
+      - name: Add and Commit changes to deploy branch
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
@@ -51,4 +51,4 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PAT }}
-          branch: main
+          branch: deploy
