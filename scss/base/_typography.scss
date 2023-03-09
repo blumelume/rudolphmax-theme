@@ -37,26 +37,11 @@ a {
   border-bottom: 0.1em solid a.$primary-dark;
   text-decoration: none;
   transition: 0.25s ease-out;
-  
-  &:hover {
-    color: a.$primary;
-    border-bottom: 0.1em solid a.$primary;
-  }
 }
 
-.hero,
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
+%lowercase { text-transform: lowercase; }
+
+%heading {
   line-height: 1em;
   overflow-wrap: anywhere;
   &.small { font-weight: 400; }
@@ -67,15 +52,18 @@ h6,
   }
 }
 
-.hero,
-.h1,
-.h2,
-.h3 {
-  text-transform: lowercase;
+.text,
+.article {
+  %heading {
+    margin-top: max(a.$xs, 0.15em);
+    margin-bottom: max(a.$xxs, 0.05em);
+  }
 }
 
 .hero,
 %hero {
+  @extend %heading, %lowercase;
+
   font-size: calc( a.pow($type-mult, 6) * 1rem);
   font-weight: 700;
 }
@@ -83,6 +71,8 @@ h6,
 h1,
 .h1,
 %h1 {
+  @extend %heading, %lowercase;
+
   font-size: calc( a.pow($type-mult, 5) * 1rem);
   font-weight: 500;
 }
@@ -90,6 +80,8 @@ h1,
 h2,
 .h2,
 %h2 {
+  @extend %heading;
+
   font-size: calc( a.pow($type-mult, 4) * 1rem);
   font-weight: 400;
 }
@@ -97,6 +89,8 @@ h2,
 h3,
 .h3,
 %h3 {
+  @extend %heading, %lowercase;
+
   font-size: calc( a.pow($type-mult, 3) * 1rem);
   font-weight: 700;
 }
@@ -104,6 +98,8 @@ h3,
 h4,
 .h4,
 %h4 {
+  @extend %heading;
+
   font-size: calc( a.pow($type-mult, 2) * 1rem);
   font-weight: 500;
 }
@@ -111,6 +107,8 @@ h4,
 h5,
 .h5,
 %h5 {
+  @extend %heading;
+
   font-size: calc( a.pow($type-mult, 1) * 1rem);
   font-weight: 700;
 }
@@ -118,6 +116,8 @@ h5,
 h6,
 .h6,
 %h6 {
+  @extend %heading;
+
   font-size: 1rem;
   font-weight: 500;
 }
@@ -130,6 +130,10 @@ h6,
   font-weight: 400;
 }
 
+a:hover {
+  color: a.$primary;
+  border-bottom: 0.1em solid a.$primary;
+}
 
 b,
 .bold { font-weight: 700; }
@@ -141,45 +145,6 @@ i { font-style: italic; }
 
 .regular { font-weight: 400; }
 .ds { text-shadow: 0 17px 40px rgba(0 0 0 / 100%); }
-
-
-/*
-special intext spacing
-*/
-.text,
-.article {
-  .hero,
-  h1,
-  .h1,
-  h2,
-  .h2,
-  h3,
-  .h3,
-  h4,
-  .h4,
-  h5,
-  .h5,
-  h6,
-  .h6 {
-    margin-top: max(a.$xs, 0.15em);
-    margin-bottom: max(a.$xxs, 0.05em);
-  }
-}
-
-ul,
-ol {
-  list-style-position: outside;
-  padding-left: 1em;
-
-  li {
-    margin: max(a.$xs, 0.15em) 0;
-
-    ul,
-    ol {
-      margin-left: 1.5em;
-    }
-  }
-}
 
 ul {
   list-style-type: disc;
@@ -196,5 +161,20 @@ ol {
   ol {
     list-style-type: lower-alpha;
     ol { list-style-type: upper-roman; }
+  }
+}
+
+ul,
+ol {
+  list-style-position: outside;
+  padding-left: 1em;
+
+  li {
+    margin: max(a.$xs, 0.15em) 0;
+
+    ul,
+    ol {
+      margin-left: 1.5em;
+    }
   }
 }
