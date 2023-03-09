@@ -6,8 +6,49 @@ on:
     - main
 
 jobs:
+  base_lint:
+    name: Base Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          
+      - name: Install Stylelint Scss-Config
+        run: npm install --save-dev stylelint-config-standard-scss
+
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_JAVASCRIPT_STANDARD: false
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  twig_lint:
+    name: Lint Twig
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Twig Lint
+        run: composer global require "asm89/twig-lint" "@stable"
+      
+      - name: Checkout source Git branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Copy files to temporary folder
+        run: |
+          mkdir -vp /tmp/rudolphmax-theme/templates/ 
+          cp -r templates/ /tmp/rudolphmax-theme/templates/
+
+      - name: Run Twig Lint
+        run: ~/.composer/vendor/bin/twig-lint lint "/tmp/rudolphmax-theme/templates/"
+    
   build_scss:
     name: Build SCSS
+    needs: [base_lint, twig_lint]
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
