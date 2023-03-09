@@ -4,6 +4,7 @@
 nav#main {
   position: sticky;
   bottom: $xs;
+  z-index: 100;
 
   @extend .w3;
   @include md { padding: 0 $xs; }
@@ -85,7 +86,6 @@ nav#main {
     .nav-list {
       position: absolute;
       bottom: calc(100% + $sm);
-      z-index: 1;
       flex-direction: column-reverse;
       align-items: flex-start;
       gap: calc($xs/2);
