@@ -4,13 +4,15 @@
 button, .button, .btn {
   border: none;
   text-decoration: none !important;
+
   @include a.transition(0.4s, ease-out);
 
   &.slim {
     @extend .copy, .small;
+
     height: max-content;
     width: max-content;
-    padding: 1.5*a.$xxs a.$xs;
+    padding: calc(1.5 * a.$xxs) a.$xs;
     line-height: 1em;
     color: a.$light;
     background-color: a.$primary-dark;
@@ -32,6 +34,7 @@ button, .button, .btn {
 
   &.color {
     @extend .copy, .big;
+
     font-weight: 500;
     line-height: 1em;
     padding: a.$xs a.$sm;
@@ -40,6 +43,7 @@ button, .button, .btn {
 
     &.primary {
       color: a.$primary;
+
       @include a.box-shadow(0, 0, 38px, 5px, rgba(a.$primary,0.05));
 
       &:hover { @include a.box-shadow(0, 8px, 38px, 5px, rgba(a.$primary,0.3)); }
@@ -47,6 +51,7 @@ button, .button, .btn {
 
     &.secondary {
       color: a.$secondary;
+      
       @include a.box-shadow(0, 0, 38px, 5px, rgba(a.$secondary,0.03));
 
       &:hover { @include a.box-shadow(0, 8px, 38px, 5px, rgba(a.$secondary,0.08)); }
