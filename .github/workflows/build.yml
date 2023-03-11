@@ -52,6 +52,11 @@ jobs:
     if: needs.base_lint.result == 'success' && needs.twig_lint.result == 'success'
     runs-on: ubuntu-latest
     steps:
+      - name: Prepare for merge
+        run: |
+          git checkout main
+          git pull
+          
       - name: Checkout to deploy branch
         uses: actions/checkout@v2
         with:
