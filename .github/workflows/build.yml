@@ -53,13 +53,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Checkout to deploy branch
-        uses: actions/checkout@v2
-        with:
-          ref: deploy
-          fetch-depth: 10
-          submodules: true
-
       - name: Merge main -> deploy
         uses: devmasx/merge-branch@master
         with:
@@ -67,6 +60,13 @@ jobs:
           from_branch: main
           target_branch: deploy
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Checkout to deploy branch
+        uses: actions/checkout@v2
+        with:
+          ref: deploy
+          fetch-depth: 10
+          submodules: true
 
       - name: Make destination directory for compiled CSS
         run: mkdir -vp /tmp/rudolphmax.com-theme/css/
