@@ -83,7 +83,9 @@ jobs:
           mv /tmp/rudolphmax.com-theme/css/ css/
       
       - name: Remove compiled sources
-        run: rm -rf scss
+        run: |
+          rm -rf scss
+          rm -rf .github
 
       - name: Add and Commit changes to deploy branch
         run: |
