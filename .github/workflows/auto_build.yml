@@ -49,7 +49,7 @@ jobs:
   build_scss:
     name: Build SCSS
     needs: [base_lint, twig_lint]
-    if: github.event.pull_request.merged == true
+    if: needs.base_lint.result == 'success' && needs.twig_lint.result == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout to deploy branch
