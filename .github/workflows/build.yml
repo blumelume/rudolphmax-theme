@@ -66,7 +66,7 @@ jobs:
           type: now
           from_branch: main
           target_branch: deploy
-          github_token: ${{ secrets.PAT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Make destination directory for compiled CSS
         run: mkdir -vp /tmp/rudolphmax.com-theme/css/
@@ -95,5 +95,5 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.PAT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: deploy
