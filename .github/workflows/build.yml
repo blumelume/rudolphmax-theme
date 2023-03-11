@@ -1,4 +1,4 @@
-name: Auto Build
+name: Build
 
 on: 
   push:
@@ -46,8 +46,8 @@ jobs:
       - name: Run Twig Lint
         run: ~/.composer/vendor/bin/twig-lint lint "/tmp/rudolphmax-theme/templates/"
     
-  build_scss:
-    name: Build SCSS
+  build:
+    name: Build
     needs: [base_lint, twig_lint]
     if: needs.base_lint.result == 'success' && needs.twig_lint.result == 'success'
     runs-on: ubuntu-latest
@@ -62,8 +62,6 @@ jobs:
       - name: Merge from main
         run: |
           git merge main
-          git add -A
-          git commit -m 'Automation : Merged from main'
 
       - name: Make destination directory for compiled CSS
         run: mkdir -vp /tmp/rudolphmax.com-theme/css/
@@ -78,13 +76,16 @@ jobs:
         run: |
           rm -rf css
           mv /tmp/rudolphmax.com-theme/css/ css/
+      
+      - name: Remove compiled sources
+        run: rm -rf scss
 
       - name: Add and Commit changes to deploy branch
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
-          git add -f css/*
-          git commit -m 'Automation : Compiled SCSS'
+          git add -A
+          git commit -m 'Automation : Built'
 
       - name: Push changes
         uses: ad-m/github-push-action@master
