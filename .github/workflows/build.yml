@@ -1,0 +1,99 @@
+name: Build
+
+on: 
+  push:
+    branches:
+    - main
+
+jobs:
+  base_lint:
+    name: Base Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          
+      - name: Install Stylelint Scss-Config
+        run: npm install --save-dev stylelint-config-standard-scss
+
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_JAVASCRIPT_STANDARD: false
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  twig_lint:
+    name: Lint Twig
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Twig Lint
+        run: composer global require "asm89/twig-lint" "@stable"
+      
+      - name: Checkout source Git branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Copy files to temporary folder
+        run: |
+          mkdir -vp /tmp/rudolphmax-theme/templates/ 
+          cp -r templates/ /tmp/rudolphmax-theme/templates/
+
+      - name: Run Twig Lint
+        run: ~/.composer/vendor/bin/twig-lint lint "/tmp/rudolphmax-theme/templates/"
+    
+  build:
+    name: Build
+    needs: [base_lint, twig_lint]
+    if: needs.base_lint.result == 'success' && needs.twig_lint.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Checkout to deploy branch
+        uses: actions/checkout@v2
+        with:
+          ref: deploy
+          fetch-depth: 10
+          submodules: true
+
+      - name: Merge main -> deploy
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: main
+          target_branch: deploy
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Make destination directory for compiled CSS
+        run: mkdir -vp /tmp/rudolphmax.com-theme/css/
+
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.4.11
+        with:
+          source: scss/styles.scss
+          destination: /tmp/rudolphmax.com-theme/css/styles.css
+
+      - name: Move compiled CSS to path within build branch
+        run: |
+          rm -rf css
+          mv /tmp/rudolphmax.com-theme/css/ css/
+      
+      - name: Remove compiled sources
+        run: rm -rf scss
+
+      - name: Add and Commit changes to deploy branch
+        run: |
+          git config --local user.email 'action@github.com'
+          git config --local user.name 'GitHub Action'
+          git add -A
+          git commit -m 'Automation : Built'
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: deploy
